@@ -1,10 +1,10 @@
 
 import Layout from '../components/Layout';
 
-const Home = () => (
+const WebPage = () => (
   <Layout>
-    <section id="section-web" className="content-section content-section--web">
-      <h2>Trabalhos Feitos Anteriormente</h2>
+    <section className="content-section content-section--web">
+      <h2>Websites</h2>
       <h3 className="section-subtitle">Trabalhos Feitos:</h3>
       <div className="carousel" aria-label="Carrossel de trabalhos realizados">
         <div className="carousel-viewport">
@@ -36,67 +36,61 @@ const Home = () => (
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto6" target="_blank" rel="noreferrer">
-                <img src="/images/img8.jpg" alt="Trabalho web 1" />
+                <img src="/images/img8.jpg" alt="Trabalho web 6" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto7" target="_blank" rel="noreferrer">
-                <img src="/images/img4.jpg" alt="Trabalho web 2" />
+                <img src="/images/img4.jpg" alt="Trabalho web 7" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto8" target="_blank" rel="noreferrer">
-                <img src="/images/img9.jpg" alt="Trabalho web 3" />
+                <img src="/images/img9.jpg" alt="Trabalho web 8" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto9" target="_blank" rel="noreferrer">
-                <img src="/images/img5.jpg" alt="Trabalho web 4" />
+                <img src="/images/img5.jpg" alt="Trabalho web 9" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto10" target="_blank" rel="noreferrer">
-                <img src="/images/img10.jpg" alt="Trabalho web 5" />
+                <img src="/images/img10.jpg" alt="Trabalho web 10" />
               </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="section-automacao" className="content-section content-section--automacao">
-      <h2>Sistemas de Automação</h2>
-      <div className="content-grid-2 content-grid-2--align-center">
-        <div>
-          <p>
-            Descreva aqui as soluções de automação que você oferece, como integrações,
-            rotinas automáticas e redução de tarefas manuais para os seus clientes.
-          </p>
-        </div>
-        <div className="automacao-gif-wrap" aria-label="GIF de automação">
-          <img src="/gif/test_gif.gif" alt="Automação em ação" className="automacao-gif" />
-        </div>
-      </div>
-    </section>
-
-    <section id="section-sobre" className="content-section content-section--sobre">
-      <h2>Sobre Nós</h2>
       <div className="content-grid-2">
         <div>
           <p>
-            Aqui você pode apresentar um resumo da empresa, da sua história e da forma
-            como trabalha com os clientes no dia a dia.
+            Primeira área de texto em duas colunas: descreva aqui os serviços de
+            desenvolvimento web, tipos de sites e tecnologias que utiliza.
           </p>
         </div>
         <div>
           <p>
-            Use este espaço para reforçar diferenciais, valores e a forma como os seus
-            serviços ajudam pessoas e negócios a alcançarem resultados.
+            Segunda coluna: prazos, metodologia ou casos de sucesso. Pode adaptar
+            o conteúdo conforme a oferta da empresa.
           </p>
+        </div>
+      </div>
+
+      <div className="content-grid-2 content-grid-2--align-center">
+        <div>
+          <p>
+            Texto à esquerda desta linha: explique o processo, demonstrações ou
+            detalhes adicionais sobre os trabalhos apresentados no carrossel.
+          </p>
+        </div>
+        <div className="automacao-gif-wrap" aria-label="Demonstração">
+          <img src="/gif/test_gif.gif" alt="Demonstração" className="automacao-gif" />
         </div>
       </div>
     </section>
   </Layout>
 );
 
-export default Home;
+export default WebPage;

@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   GraduationCap, BookOpen, Users, Clock, Star, Award,
   ArrowRight, ChevronRight, Play, Monitor, FileText,
@@ -64,8 +64,8 @@ export default function Ensino() {
     <div className="min-h-screen bg-white">
       <BackToHome />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-indigo-900 via-blue-900 to-violet-900 text-white overflow-hidden">
+      {/* HEADER SECTION */}
+      <header className="relative bg-gradient-to-br from-indigo-900 via-blue-900 to-violet-900 text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
@@ -115,7 +115,7 @@ export default function Ensino() {
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Diferenciais */}
       <section className="max-w-7xl mx-auto px-6 py-16">
@@ -292,11 +292,17 @@ export default function Ensino() {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-10">
+      {/* FOOTER SECTION */}
+      <footer className="bg-indigo-950 text-white py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2">
-            <GraduationCap size={20} className="text-indigo-400" />
-            <span className="font-bold">EduTech Academy</span>
+          <div className="flex items-center gap-2"><GraduationCap size={20} className="text-blue-400" /><span className="font-bold">Educa+</span></div>
+          <div className="flex gap-4">
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
           </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
         </div>

@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   Calendar, MapPin, Clock, Users, Ticket, Star,
   ArrowRight, ChevronRight, Music, Mic2, Camera,
@@ -60,8 +60,8 @@ export default function Eventos() {
     <div className="min-h-screen bg-white">
       <BackToHome />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-pink-600 via-rose-600 to-purple-700 text-white overflow-hidden">
+      {/* HEADER SECTION */}
+      <header className="relative bg-gradient-to-br from-pink-600 via-rose-600 to-purple-700 text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_50%)]" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl" />
@@ -106,7 +106,8 @@ export default function Eventos() {
             ))}
           </div>
         </div>
-      </section>
+      </header>
+
 
       {/* Filtros */}
       <section ref={eventosRef} className="max-w-7xl mx-auto px-6 py-8">
@@ -298,11 +299,20 @@ export default function Eventos() {
         </div>
       </section>
 
+      {/* FOOTER SECTION */}
       <footer className="bg-gray-900 text-white py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <PartyPopper size={20} />
+            <PartyPopper size={20} className="text-pink-500" />
             <span className="font-bold">EventosBR</span>
+          </div>
+          <div className="flex gap-4">
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
           </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
         </div>

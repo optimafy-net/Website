@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   Package, Search, Filter, ArrowRight, ChevronRight,
   Truck, Shield, Clock, Star, Phone, Mail, MapPin,
@@ -64,8 +64,8 @@ export default function Fornecedores() {
     <div className="min-h-screen bg-gray-50">
       <BackToHome />
 
-      {/* Header */}
-      <header className="bg-gradient-to-r from-orange-600 to-red-600 text-white">
+      {/* HEADER SECTION */}
+      <header className="relative bg-gradient-to-br from-orange-600 via-orange-700 to-red-800 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="bg-white/10 p-2 rounded-lg"><Package size={28} /></div>

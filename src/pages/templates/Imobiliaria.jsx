@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   Building2, Search, MapPin, Bed, Bath, Car, Maximize,
   Heart, Eye, ArrowRight, ChevronRight, Phone, Mail,
@@ -67,8 +67,8 @@ export default function Imobiliaria() {
     <div className="min-h-screen bg-gray-50">
       <BackToHome />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-sky-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
+      {/* HEADER SECTION */}
+      <header className="relative bg-gradient-to-br from-sky-900 via-blue-900 to-indigo-950 text-white overflow-hidden">
         <div className="absolute inset-0"><div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-500/10 rounded-full blur-3xl" /></div>
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
           <div className="max-w-2xl mb-12">
@@ -93,7 +93,7 @@ export default function Imobiliaria() {
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Números */}
       <section className="max-w-7xl mx-auto px-6 -mt-8 relative z-10">
@@ -283,9 +283,18 @@ export default function Imobiliaria() {
         </div>
       </section>
 
+      {/* FOOTER SECTION */}
       <footer className="bg-gray-900 text-white py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2"><Building2 size={20} className="text-sky-400" /><span className="font-bold">Prime Imóveis</span></div>
+          <div className="flex gap-4">
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+          </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
         </div>
       </footer>

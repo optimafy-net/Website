@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   Briefcase, TrendingUp, Target, BarChart3, Users, Shield,
   CheckCircle, ArrowRight, ChevronRight, Star, Award,
@@ -50,8 +50,8 @@ export default function Consultoria() {
     <div className="min-h-screen bg-white">
       <BackToHome />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white overflow-hidden">
+      {/* HEADER SECTION */}
+      <header className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-36">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -88,7 +88,7 @@ export default function Consultoria() {
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Serviços */}
       <section className="max-w-7xl mx-auto px-6 py-20">
@@ -269,9 +269,18 @@ export default function Consultoria() {
         </div>
       </section>
 
+      {/* FOOTER SECTION */}
       <footer className="bg-slate-900 text-white py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2"><Briefcase size={20} /><span className="font-bold">Apex Consultoria</span></div>
+          <div className="flex gap-4">
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+          </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
         </div>
       </footer>

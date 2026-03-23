@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   Star, ArrowRight, Check, Clock, Award, Users,
   Camera, Palette, PenTool, Lightbulb, MessageSquare,
@@ -58,8 +58,8 @@ export default function ServicoIndividual() {
     <div className="min-h-screen bg-white">
       <BackToHome />
 
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-violet-950 via-purple-900 to-indigo-900 text-white overflow-hidden">
+      {/* HEADER SECTION */}
+      <header className="relative bg-gradient-to-br from-violet-900 via-purple-900 to-indigo-950 text-white overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl" />
@@ -93,7 +93,7 @@ export default function ServicoIndividual() {
             ))}
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Serviços */}
       <section className="max-w-6xl mx-auto px-6 py-20">
@@ -290,9 +290,18 @@ export default function ServicoIndividual() {
         </div>
       </section>
 
+      {/* FOOTER SECTION */}
       <footer className="bg-gray-900 text-white py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Studio Criativo — Todos os direitos reservados</p>
+          <div className="flex gap-4">
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+          </div>
           <div className="flex gap-6 text-sm text-gray-400">
             <span className="flex items-center gap-1 hover:text-white cursor-pointer transition"><Phone size={14} /> (11) 99000-0000</span>
             <span className="flex items-center gap-1 hover:text-white cursor-pointer transition"><Mail size={14} /> contato@studio.com</span>

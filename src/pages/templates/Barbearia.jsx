@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   Scissors, Clock, MapPin, Phone, Star, ArrowRight,
   Instagram, Calendar, Users, Award, ChevronRight,
@@ -81,8 +81,8 @@ export default function Barbearia() {
     <div className="min-h-screen bg-stone-50">
       <BackToHome />
 
-      {/* Hero */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+      {/* HEADER SECTION */}
+      <header className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-stone-950 via-neutral-900 to-stone-900" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(180,130,60,0.15),transparent_60%)]" />
         <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-stone-950/80 to-transparent" />
@@ -128,7 +128,7 @@ export default function Barbearia() {
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Serviços */}
       <section ref={servicosRef} className="max-w-6xl mx-auto px-6 py-20">
@@ -402,6 +402,7 @@ export default function Barbearia() {
         </div>
       </section>
 
+      {/* FOOTER SECTION */}
       <footer className="bg-stone-950 text-white py-10">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
@@ -409,7 +410,12 @@ export default function Barbearia() {
             <span className="font-bold text-lg">Barber Studio</span>
           </div>
           <div className="flex gap-4">
-            <button className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition"><Instagram size={18} /></button>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
           </div>
           <p className="text-sm text-stone-500">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
         </div>

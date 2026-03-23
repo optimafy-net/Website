@@ -14,6 +14,7 @@ export default function Institucional() {
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="sticky top-0 z-40 bg-linear-to-r from-blue-950 to-blue-700 text-orange-500 shadow-lg">
+        {/* HEADER SECTION */}
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-3">
             <div className="text-sm uppercase text-center md:text-left">Logo / Automafy</div>
@@ -119,6 +120,24 @@ export default function Institucional() {
           </p>
         </section>
       </main>
+
+      {/* FOOTER SECTION */}
+      <footer className="bg-blue-950 text-white py-10 mt-12">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-2 font-bold uppercase text-orange-500">
+            <span>Nome Empresa</span>
+          </div>
+          <div className="flex gap-4">
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            </a>
+          </div>
+          <p className="text-sm text-blue-300">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
+        </div>
+      </footer>
     </div>
   )
 }

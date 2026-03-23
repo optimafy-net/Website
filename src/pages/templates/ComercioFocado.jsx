@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   Search, Filter, Grid3X3, List, Star, ShoppingCart,
   Heart, Eye, Cpu, Wrench, Zap, ChevronDown,
@@ -98,7 +98,7 @@ export default function ComercioFocado() {
     <div className="min-h-screen bg-gray-50">
       <BackToHome />
 
-      {/* Header */}
+      {/* HEADER SECTION */}
       <header className="bg-gradient-to-r from-blue-900 to-cyan-800 text-white">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -452,6 +452,14 @@ export default function ComercioFocado() {
               <li className="flex items-center gap-2"><Mail size={14} /> contato@techparts.com</li>
               <li className="flex items-center gap-2"><MapPin size={14} /> Rua da Tecnologia, 500</li>
             </ul>
+            <div className="flex gap-4 mt-4">
+              <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+                <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+              </a>
+              <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+                <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+              </a>
+            </div>
           </div>
         </div>
       </footer>

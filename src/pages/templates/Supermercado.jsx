@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import BackToHome from '../components/BackToHome'
-import Modal from '../components/Modal'
-import { useToast } from '../components/Toast'
+import BackToHome from '../../components/BackToHome'
+import Modal from '../../components/Modal'
+import { useToast } from '../../components/Toast'
 import {
   ShoppingCart, Search, MapPin, Clock, Phone, Star,
   Truck, CreditCard, Percent, ChevronRight, Heart,
@@ -134,7 +134,7 @@ export default function Supermercado() {
         </div>
       </div>
 
-      {/* Header */}
+      {/* HEADER SECTION */}
       <header className="bg-white shadow-sm sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
@@ -493,6 +493,14 @@ export default function Supermercado() {
                 <li className="flex items-center gap-2"><MapPin size={14} /> Av. Central, 1500</li>
                 <li className="flex items-center gap-2"><Clock size={14} /> 7h às 22h</li>
               </ul>
+              <div className="flex gap-4 mt-4">
+                <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+                  <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+                </a>
+                <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
+                  <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+                </a>
+              </div>
             </div>
           </div>
           <div className="border-t border-green-800 mt-8 pt-8 text-center text-sm text-green-400">
