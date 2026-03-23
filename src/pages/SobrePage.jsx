@@ -44,12 +44,12 @@ const SobrePage = () => (
       <div className="content-grid-2">
         <div className="carousel-item">
           <a href="https://example.com/projeto6" target="_blank" rel="noreferrer">
-            <img src="/images/img6.jpg" alt="Trabalho web 1" />
+            <img src={`${import.meta.env.BASE_URL}images/img6.jpg`} alt="Trabalho web 1" />
           </a>
         </div>
         <div className="carousel-item">
           <a href="https://example.com/projeto6" target="_blank" rel="noreferrer">
-            <img src="/images/img8.jpg" alt="Trabalho web 1" />
+            <img src={`${import.meta.env.BASE_URL}images/img8.jpg`} alt="Trabalho web 1" />
           </a>
         </div>
       </div>

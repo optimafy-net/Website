@@ -29,7 +29,7 @@ const AutomacaoPage = () => (
           </p>
         </div>
         <div className="automacao-gif-wrap" aria-label="GIF de automação">
-          <img src="/gif/test_gif.gif" alt="Automação em ação" className="automacao-gif" />
+          <img src={`${import.meta.env.BASE_URL}gif/test_gif.gif`} alt="Automação em ação" className="automacao-gif" />
         </div>
       </div>
     </section>

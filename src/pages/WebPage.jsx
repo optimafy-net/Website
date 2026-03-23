@@ -11,52 +11,52 @@ const WebPage = () => (
           <div className="carousel-track">
             <div className="carousel-item">
               <a href="https://example.com/projeto1" target="_blank" rel="noreferrer">
-                <img src="/images/img1.jpg" alt="Trabalho web 1" />
+                <img src={`${import.meta.env.BASE_URL}images/img1.jpg`} alt="Trabalho web 1" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto2" target="_blank" rel="noreferrer">
-                <img src="/images/img6.jpg" alt="Trabalho web 2" />
+                <img src={`${import.meta.env.BASE_URL}images/img6.jpg`} alt="Trabalho web 2" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto3" target="_blank" rel="noreferrer">
-                <img src="/images/img2.jpg" alt="Trabalho web 3" />
+                <img src={`${import.meta.env.BASE_URL}images/img2.jpg`} alt="Trabalho web 3" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto4" target="_blank" rel="noreferrer">
-                <img src="/images/img7.jpg" alt="Trabalho web 4" />
+                <img src={`${import.meta.env.BASE_URL}images/img7.jpg`} alt="Trabalho web 4" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto5" target="_blank" rel="noreferrer">
-                <img src="/images/img3.jpg" alt="Trabalho web 5" />
+                <img src={`${import.meta.env.BASE_URL}images/img3.jpg`} alt="Trabalho web 5" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto6" target="_blank" rel="noreferrer">
-                <img src="/images/img8.jpg" alt="Trabalho web 6" />
+                <img src={`${import.meta.env.BASE_URL}images/img8.jpg`} alt="Trabalho web 6" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto7" target="_blank" rel="noreferrer">
-                <img src="/images/img4.jpg" alt="Trabalho web 7" />
+                <img src={`${import.meta.env.BASE_URL}images/img4.jpg`} alt="Trabalho web 7" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto8" target="_blank" rel="noreferrer">
-                <img src="/images/img9.jpg" alt="Trabalho web 8" />
+                <img src={`${import.meta.env.BASE_URL}images/img9.jpg`} alt="Trabalho web 8" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto9" target="_blank" rel="noreferrer">
-                <img src="/images/img5.jpg" alt="Trabalho web 9" />
+                <img src={`${import.meta.env.BASE_URL}images/img5.jpg`} alt="Trabalho web 9" />
               </a>
             </div>
             <div className="carousel-item">
               <a href="https://example.com/projeto10" target="_blank" rel="noreferrer">
-                <img src="/images/img10.jpg" alt="Trabalho web 10" />
+                <img src={`${import.meta.env.BASE_URL}images/img10.jpg`} alt="Trabalho web 10" />
               </a>
             </div>
           </div>
@@ -86,7 +86,7 @@ const WebPage = () => (
           </p>
         </div>
         <div className="automacao-gif-wrap" aria-label="Demonstração">
-          <img src="/gif/test_gif.gif" alt="Demonstração" className="automacao-gif" />
+          <img src={`${import.meta.env.BASE_URL}gif/test_gif.gif`} alt="Demonstração" className="automacao-gif" />
         </div>
       </div>
     </section>
