@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState, useRef } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -6,7 +7,7 @@ import {
   Truck, Package, MapPin, Clock, Shield, BarChart3,
   ArrowRight, ChevronRight, Search, Globe, Zap,
   CheckCircle, Phone, Mail, Building2, Users,
-  TrendingUp, Star, FileText, Navigation, X, AlertCircle
+  TrendingUp, Star, FileText, Navigation, X, AlertCircle, AtSign
 } from 'lucide-react'
 
 const servicos = [
@@ -76,7 +77,7 @@ export default function Logistica() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="template-page min-h-screen bg-white antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -97,13 +98,13 @@ export default function Logistica() {
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => setCotacaoModal(true)}
-                className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3.5 rounded-lg font-semibold transition flex items-center gap-2 shadow-lg shadow-emerald-500/30"
+                className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3.5 rounded-2xl font-semibold transition flex items-center gap-2 shadow-lg shadow-emerald-500/30"
               >
                 Solicitar Cotação <ArrowRight size={18} />
               </button>
               <button
                 onClick={() => servicosRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="border border-white/20 px-8 py-3.5 rounded-lg font-semibold hover:bg-white/5 transition"
+                className="border border-white/20 px-8 py-3.5 rounded-2xl font-semibold hover:bg-white/5 transition"
               >
                 Nossos Serviços
               </button>
@@ -122,12 +123,12 @@ export default function Logistica() {
                 onChange={(e) => setRastreio(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleRastrear()}
                 placeholder="Código de rastreamento (ex: LG2026001234)"
-                className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm placeholder-teal-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                className="flex-1 bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm placeholder-teal-300 focus:outline-none focus:ring-2 focus:ring-emerald-400"
               />
               <button
                 onClick={handleRastrear}
                 disabled={buscando}
-                className="bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-lg font-medium transition flex items-center gap-2 text-sm disabled:opacity-50"
+                className="bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-2xl font-medium transition flex items-center gap-2 text-sm disabled:opacity-50"
               >
                 {buscando ? (
                   <span className="flex items-center gap-2"><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Buscando...</span>
@@ -138,7 +139,7 @@ export default function Logistica() {
             </div>
 
             {resultado && resultado !== 'not_found' && (
-              <div className="mt-4 bg-white/10 rounded-xl p-4 animate-fade-in">
+              <div className="mt-4 bg-white/10 rounded-2xl p-4 animate-fade-in">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <p className="text-sm text-teal-300">Código: {resultado.codigo}</p>
@@ -165,7 +166,7 @@ export default function Logistica() {
             )}
 
             {resultado === 'not_found' && (
-              <div className="mt-4 bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex items-center gap-3 animate-fade-in">
+              <div className="mt-4 bg-red-500/10 border border-red-500/20 rounded-2xl p-4 flex items-center gap-3 animate-fade-in">
                 <AlertCircle size={20} className="text-red-400" />
                 <div>
                   <p className="font-medium text-red-300">Código não encontrado</p>
@@ -181,7 +182,7 @@ export default function Logistica() {
       <section className="max-w-7xl mx-auto px-6 -mt-8 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {numeros.map((n, i) => (
-            <div key={i} className="bg-white rounded-xl p-5 shadow-lg text-center hover:shadow-xl transition-shadow">
+            <div key={i} className="bg-white rounded-2xl p-5 shadow-lg text-center hover:shadow-2xl transition-shadow">
               <n.icon size={24} className="text-teal-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-gray-900">{n.num}</p>
               <p className="text-sm text-gray-500">{n.label}</p>
@@ -198,9 +199,9 @@ export default function Logistica() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {servicos.map((s, i) => (
-            <div key={i} className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl hover:border-teal-200 transition-all cursor-pointer">
+            <div key={i} className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:border-teal-200 transition-all cursor-pointer">
               <div className="flex items-start gap-4">
-                <div className="bg-teal-100 p-3 rounded-xl group-hover:bg-teal-600 transition-colors">
+                <div className="bg-teal-100 p-3 rounded-2xl group-hover:bg-teal-600 transition-colors">
                   <s.icon size={24} className="text-teal-600 group-hover:text-white transition-colors" />
                 </div>
                 <div className="flex-1">
@@ -232,7 +233,7 @@ export default function Logistica() {
                   { regiao: 'Centro-Oeste', prazo: '2-4 dias úteis', cidades: '350+ cidades' },
                   { regiao: 'Norte', prazo: '5-7 dias úteis', cidades: '200+ cidades' },
                 ].map((r, i) => (
-                  <div key={i} className="flex items-center justify-between bg-white rounded-xl p-4 shadow-sm">
+                  <div key={i} className="flex items-center justify-between bg-white rounded-2xl p-4 shadow-md shadow-black/5">
                     <div className="flex items-center gap-3">
                       <MapPin size={16} className="text-teal-600" />
                       <span className="font-medium">{r.regiao}</span>
@@ -256,28 +257,28 @@ export default function Logistica() {
       <Modal open={cotacaoModal} onClose={() => setCotacaoModal(false)} title="Solicitar Cotação" size="lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input type="text" placeholder="Nome *" value={formCotacao.nome} onChange={e => setFormCotacao({ ...formCotacao, nome: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
           <input type="text" placeholder="Empresa" value={formCotacao.empresa} onChange={e => setFormCotacao({ ...formCotacao, empresa: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
           <input type="email" placeholder="E-mail *" value={formCotacao.email} onChange={e => setFormCotacao({ ...formCotacao, email: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
           <input type="tel" placeholder="Telefone" value={formCotacao.telefone} onChange={e => setFormCotacao({ ...formCotacao, telefone: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
           <input type="text" placeholder="Cidade de origem *" value={formCotacao.origem} onChange={e => setFormCotacao({ ...formCotacao, origem: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
           <input type="text" placeholder="Cidade de destino *" value={formCotacao.destino} onChange={e => setFormCotacao({ ...formCotacao, destino: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
           <input type="text" placeholder="Peso estimado (kg)" value={formCotacao.peso} onChange={e => setFormCotacao({ ...formCotacao, peso: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
           <select value={formCotacao.tipo} onChange={e => setFormCotacao({ ...formCotacao, tipo: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-600">
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray-600">
             <option>Carga Geral</option>
             <option>Carga Fracionada</option>
             <option>Carga Expressa</option>
             <option>Carga Internacional</option>
           </select>
         </div>
-        <button onClick={handleCotacao} className="w-full mt-6 bg-teal-600 text-white py-3 rounded-xl font-semibold hover:bg-teal-700 transition flex items-center justify-center gap-2">
+        <button onClick={handleCotacao} className="w-full mt-6 bg-teal-600 text-white py-3 rounded-2xl font-semibold hover:bg-teal-700 transition flex items-center justify-center gap-2">
           <FileText size={16} /> Enviar Cotação
         </button>
       </Modal>
@@ -290,11 +291,11 @@ export default function Logistica() {
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => setCotacaoModal(true)}
-              className="bg-white text-teal-700 px-8 py-3.5 rounded-lg font-semibold hover:shadow-xl transition flex items-center gap-2"
+              className="bg-white text-teal-700 px-8 py-3.5 rounded-2xl font-semibold hover:shadow-2xl transition flex items-center gap-2"
             >
               <FileText size={18} /> Fazer Cotação
             </button>
-            <button className="border border-white/30 px-8 py-3.5 rounded-lg font-semibold hover:bg-white/10 transition flex items-center gap-2">
+            <button className="border border-white/30 px-8 py-3.5 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center gap-2">
               <Phone size={18} /> (11) 3500-0000
             </button>
           </div>
@@ -309,11 +310,11 @@ export default function Logistica() {
             <span className="font-bold">VelozLog</span>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>

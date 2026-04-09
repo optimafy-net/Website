@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -5,7 +6,7 @@ import { useToast } from '../../components/Toast'
 import {
   Briefcase, TrendingUp, Target, BarChart3, Users, Shield,
   CheckCircle, ArrowRight, ChevronRight, Star, Award,
-  Phone, Mail, MapPin, Clock, Zap, Building2, LineChart, Calendar, X
+  Phone, Mail, MapPin, Clock, Zap, Building2, LineChart, Calendar, X, AtSign
 } from 'lucide-react'
 
 const servicos = [
@@ -47,7 +48,7 @@ export default function Consultoria() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="template-page min-h-screen bg-white antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -65,11 +66,11 @@ export default function Consultoria() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <button onClick={() => setReuniaoModal(true)}
-                  className="bg-blue-600 hover:bg-blue-700 px-8 py-3.5 rounded-lg font-semibold transition flex items-center gap-2 shadow-lg shadow-blue-600/30">
+                  className="bg-blue-600 hover:bg-blue-700 px-8 py-3.5 rounded-2xl font-semibold transition flex items-center gap-2 shadow-lg shadow-blue-600/30">
                   Agende uma Reunião <ArrowRight size={18} />
                 </button>
                 <button onClick={() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="border border-white/20 px-8 py-3.5 rounded-lg font-semibold hover:bg-white/5 transition">
+                  className="border border-white/20 px-8 py-3.5 rounded-2xl font-semibold hover:bg-white/5 transition">
                   Nossos Cases
                 </button>
               </div>
@@ -81,7 +82,7 @@ export default function Consultoria() {
                 { num: '15+', label: 'Anos de Mercado', icon: Award },
                 { num: '120+', label: 'Empresas Atendidas', icon: Building2 },
               ].map((s, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
+                <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
                   <s.icon size={24} className="text-blue-400 mb-3" /><p className="text-2xl font-bold">{s.num}</p><p className="text-sm text-gray-400">{s.label}</p>
                 </div>
               ))}
@@ -100,8 +101,8 @@ export default function Consultoria() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicos.map((s, i) => (
             <div key={i} onClick={() => setServicoDetalhe(s)}
-              className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl hover:border-blue-100 transition-all duration-300 cursor-pointer">
-              <div className="bg-blue-50 p-3 rounded-xl w-fit mb-4 group-hover:bg-blue-600 transition-colors">
+              className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:border-blue-100 transition-all duration-500 cursor-pointer">
+              <div className="bg-blue-50 p-3 rounded-2xl w-fit mb-4 group-hover:bg-blue-600 transition-colors">
                 <s.icon size={24} className="text-blue-600 group-hover:text-white transition-colors" />
               </div>
               <h3 className="text-lg font-bold mb-2">{s.titulo}</h3>
@@ -118,8 +119,8 @@ export default function Consultoria() {
       <Modal open={!!servicoDetalhe} onClose={() => setServicoDetalhe(null)} title={servicoDetalhe?.titulo || ''}>
         {servicoDetalhe && (
           <div>
-            <div className="bg-blue-50 rounded-xl p-6 flex items-center gap-4 mb-6">
-              <div className="bg-blue-600 p-3 rounded-xl"><servicoDetalhe.icon size={28} className="text-white" /></div>
+            <div className="bg-blue-50 rounded-2xl p-6 flex items-center gap-4 mb-6">
+              <div className="bg-blue-600 p-3 rounded-2xl"><servicoDetalhe.icon size={28} className="text-white" /></div>
               <div>
                 <h3 className="font-bold text-lg">{servicoDetalhe.titulo}</h3>
                 <p className="text-sm text-gray-500">{servicoDetalhe.desc}</p>
@@ -127,7 +128,7 @@ export default function Consultoria() {
             </div>
             <p className="text-gray-600 mb-6">{servicoDetalhe.detalhes}</p>
             <button onClick={() => { setServicoDetalhe(null); setReuniaoModal(true) }}
-              className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2">
+              className="w-full bg-blue-600 text-white py-3 rounded-2xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2">
               <Calendar size={16} /> Agendar Consultoria
             </button>
           </div>
@@ -149,7 +150,7 @@ export default function Consultoria() {
               { step: '04', titulo: 'Monitoramento', desc: 'KPIs e ajustes contínuos de rota', cor: 'bg-violet-600' },
             ].map((p, i) => (
               <div key={i} className="relative">
-                <div className={`${p.cor} text-white w-12 h-12 rounded-xl flex items-center justify-center font-bold mb-4`}>{p.step}</div>
+                <div className={`${p.cor} text-white w-12 h-12 rounded-2xl flex items-center justify-center font-bold mb-4`}>{p.step}</div>
                 <h3 className="font-bold text-lg mb-2">{p.titulo}</h3>
                 <p className="text-gray-500 text-sm">{p.desc}</p>
                 {i < 3 && <div className="hidden md:block absolute top-6 left-16 w-full h-0.5 bg-gray-200" />}
@@ -171,7 +172,7 @@ export default function Consultoria() {
               onClick={() => setCaseDetalhe(c)}>
               <span className="text-xs text-blue-400 font-medium">{c.area}</span>
               <h3 className="text-xl font-bold mt-2 mb-4">{c.empresa}</h3>
-              <div className="bg-white/10 rounded-xl p-4 mb-4">
+              <div className="bg-white/10 rounded-2xl p-4 mb-4">
                 <LineChart size={20} className="text-green-400 mb-2" />
                 <p className="text-2xl font-bold text-green-400">{c.resultado}</p>
               </div>
@@ -190,15 +191,15 @@ export default function Consultoria() {
       <Modal open={!!caseDetalhe} onClose={() => setCaseDetalhe(null)} title={caseDetalhe?.empresa || ''}>
         {caseDetalhe && (
           <div>
-            <div className="bg-gradient-to-br from-slate-900 to-gray-800 rounded-xl p-6 text-white mb-6">
+            <div className="bg-gradient-to-br from-slate-900 to-gray-800 rounded-2xl p-6 text-white mb-6">
               <span className="text-xs text-blue-400 font-medium">{caseDetalhe.area}</span>
               <h3 className="text-xl font-bold mt-2">{caseDetalhe.empresa}</h3>
               <div className="flex items-center gap-4 mt-4">
-                <div className="bg-white/10 rounded-lg px-4 py-2">
+                <div className="bg-white/10 rounded-2xl px-4 py-2">
                   <p className="text-xs text-gray-400">Resultado</p>
                   <p className="text-lg font-bold text-green-400">{caseDetalhe.resultado}</p>
                 </div>
-                <div className="bg-white/10 rounded-lg px-4 py-2">
+                <div className="bg-white/10 rounded-2xl px-4 py-2">
                   <p className="text-xs text-gray-400">Duração</p>
                   <p className="text-lg font-bold">{caseDetalhe.tempo}</p>
                 </div>
@@ -206,7 +207,7 @@ export default function Consultoria() {
             </div>
             <p className="text-gray-600 mb-6">{caseDetalhe.desc}</p>
             <button onClick={() => { setCaseDetalhe(null); setReuniaoModal(true) }}
-              className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+              className="w-full bg-blue-600 text-white py-3 rounded-2xl font-semibold hover:bg-blue-700 transition">
               Quero resultados assim
             </button>
           </div>
@@ -218,22 +219,22 @@ export default function Consultoria() {
         <p className="text-gray-500 text-sm mb-4">Consultoria gratuita de 30 minutos. Sem compromisso.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <input type="text" placeholder="Nome *" value={formReuniao.nome} onChange={e => setFormReuniao({ ...formReuniao, nome: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <input type="text" placeholder="Empresa" value={formReuniao.empresa} onChange={e => setFormReuniao({ ...formReuniao, empresa: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <input type="email" placeholder="E-mail *" value={formReuniao.email} onChange={e => setFormReuniao({ ...formReuniao, email: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <input type="tel" placeholder="Telefone" value={formReuniao.telefone} onChange={e => setFormReuniao({ ...formReuniao, telefone: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <input type="date" value={formReuniao.data} onChange={e => setFormReuniao({ ...formReuniao, data: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <select value={formReuniao.assunto} onChange={e => setFormReuniao({ ...formReuniao, assunto: e.target.value })}
-            className="px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-600">
+            className="px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-600">
             <option value="">Assunto da reunião</option>
             {servicos.map((s, i) => <option key={i} value={s.titulo}>{s.titulo}</option>)}
           </select>
         </div>
-        <button onClick={handleReuniao} className="w-full mt-4 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2">
+        <button onClick={handleReuniao} className="w-full mt-4 bg-blue-600 text-white py-3 rounded-2xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2">
           <Calendar size={16} /> Confirmar Reunião
         </button>
       </Modal>
@@ -242,13 +243,13 @@ export default function Consultoria() {
       <Modal open={mensagemModal} onClose={() => setMensagemModal(false)} title="Enviar Mensagem" size="sm">
         <div className="space-y-3">
           <input type="text" placeholder="Nome *" value={formMensagem.nome} onChange={e => setFormMensagem({ ...formMensagem, nome: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <input type="email" placeholder="E-mail *" value={formMensagem.email} onChange={e => setFormMensagem({ ...formMensagem, email: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <textarea placeholder="Sua mensagem *" rows={4} value={formMensagem.mensagem} onChange={e => setFormMensagem({ ...formMensagem, mensagem: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
         </div>
-        <button onClick={handleMensagem} className="w-full mt-4 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">Enviar</button>
+        <button onClick={handleMensagem} className="w-full mt-4 bg-blue-600 text-white py-3 rounded-2xl font-semibold hover:bg-blue-700 transition">Enviar</button>
       </Modal>
 
       {/* CTA */}
@@ -259,10 +260,10 @@ export default function Consultoria() {
             Agende uma consultoria gratuita de 30 minutos e descubra como podemos ajudar.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setReuniaoModal(true)} className="bg-white text-blue-700 px-8 py-3.5 rounded-lg font-semibold hover:shadow-xl transition flex items-center gap-2">
+            <button onClick={() => setReuniaoModal(true)} className="bg-white text-blue-700 px-8 py-3.5 rounded-2xl font-semibold hover:shadow-2xl transition flex items-center gap-2">
               <Phone size={18} /> Agendar Consultoria
             </button>
-            <button onClick={() => setMensagemModal(true)} className="border border-white/30 px-8 py-3.5 rounded-lg font-semibold hover:bg-white/10 transition flex items-center gap-2">
+            <button onClick={() => setMensagemModal(true)} className="border border-white/30 px-8 py-3.5 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center gap-2">
               <Mail size={18} /> Enviar Mensagem
             </button>
           </div>
@@ -274,11 +275,11 @@ export default function Consultoria() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2"><Briefcase size={20} /><span className="font-bold">Apex Consultoria</span></div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>

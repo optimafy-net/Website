@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState, useRef } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -5,7 +6,7 @@ import { useToast } from '../../components/Toast'
 import {
   Star, ArrowRight, Check, Clock, Award, Users,
   Camera, Palette, PenTool, Lightbulb, MessageSquare,
-  Phone, Mail, MapPin, Instagram, ChevronRight, Quote, X
+  Phone, Mail, MapPin, AtSign, ChevronRight, Quote, X
 } from 'lucide-react'
 
 const servicos = [
@@ -55,7 +56,7 @@ export default function ServicoIndividual() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="template-page min-h-screen bg-white antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -78,7 +79,7 @@ export default function ServicoIndividual() {
             </p>
             <div className="flex flex-wrap gap-4">
               <button onClick={() => portfolioRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-violet-900 px-8 py-3 rounded-full font-semibold hover:shadow-xl hover:shadow-white/20 transition flex items-center gap-2">
+                className="bg-white text-violet-900 px-8 py-3 rounded-full font-semibold hover:shadow-2xl hover:shadow-white/20 transition flex items-center gap-2">
                 Ver Portfólio <ArrowRight size={18} />
               </button>
               <button onClick={() => setOrcamentoModal(true)}
@@ -103,9 +104,9 @@ export default function ServicoIndividual() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {servicos.map((s, i) => (
-            <div key={i} className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl hover:border-violet-200 transition-all duration-300">
+            <div key={i} className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl hover:border-violet-200 transition-all duration-500">
               <div className="flex items-start gap-4">
-                <div className="bg-violet-100 p-3 rounded-xl group-hover:bg-violet-600 group-hover:text-white transition-colors">
+                <div className="bg-violet-100 p-3 rounded-2xl group-hover:bg-violet-600 group-hover:text-white transition-colors">
                   <s.icon size={24} className="text-violet-600 group-hover:text-white transition-colors" />
                 </div>
                 <div className="flex-1">
@@ -128,8 +129,8 @@ export default function ServicoIndividual() {
       <Modal open={!!servicoDetalhe} onClose={() => setServicoDetalhe(null)} title={servicoDetalhe?.nome || ''}>
         {servicoDetalhe && (
           <div>
-            <div className="bg-violet-50 rounded-xl p-6 flex items-center gap-4 mb-6">
-              <div className="bg-violet-600 p-3 rounded-xl"><servicoDetalhe.icon size={28} className="text-white" /></div>
+            <div className="bg-violet-50 rounded-2xl p-6 flex items-center gap-4 mb-6">
+              <div className="bg-violet-600 p-3 rounded-2xl"><servicoDetalhe.icon size={28} className="text-white" /></div>
               <div>
                 <h3 className="font-bold text-lg">{servicoDetalhe.nome}</h3>
                 <p className="text-violet-600 font-semibold">{servicoDetalhe.preco}</p>
@@ -137,7 +138,7 @@ export default function ServicoIndividual() {
             </div>
             <p className="text-gray-600 mb-6">{servicoDetalhe.detalhes}</p>
             <button onClick={() => { setServicoDetalhe(null); setOrcamentoModal(true); setFormOrcamento(prev => ({ ...prev, servico: servicoDetalhe.nome })) }}
-              className="w-full bg-violet-600 text-white py-3 rounded-xl font-semibold hover:bg-violet-700 transition">
+              className="w-full bg-violet-600 text-white py-3 rounded-2xl font-semibold hover:bg-violet-700 transition">
               Solicitar Orçamento
             </button>
           </div>
@@ -153,15 +154,15 @@ export default function ServicoIndividual() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolio.map((p, i) => (
-              <div key={i} onClick={() => setProjetoDetalhe(p)} className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer">
+              <div key={i} onClick={() => setProjetoDetalhe(p)} className="group relative bg-white rounded-2xl overflow-hidden shadow-md shadow-black/5 hover:shadow-2xl transition-all duration-500 cursor-pointer">
                 <div className="h-56 bg-gradient-to-br from-violet-100 to-purple-50 flex items-center justify-center">
-                  <Palette size={48} className="text-violet-200 group-hover:text-violet-400 transition-colors group-hover:scale-110 transform duration-300" />
+                  <Palette size={48} className="text-violet-200 group-hover:text-violet-400 transition-colors group-hover:scale-110 transform duration-500" />
                 </div>
                 <div className="p-5">
                   <span className="text-xs text-violet-600 font-medium">{p.categoria}</span>
                   <h3 className="font-bold mt-1 group-hover:text-violet-600 transition-colors">{p.titulo}</h3>
                 </div>
-                <div className="absolute inset-0 bg-violet-900/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-violet-900/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span className="text-white font-semibold flex items-center gap-2">Ver projeto <ArrowRight size={16} /></span>
                 </div>
               </div>
@@ -174,14 +175,14 @@ export default function ServicoIndividual() {
       <Modal open={!!projetoDetalhe} onClose={() => setProjetoDetalhe(null)} title={projetoDetalhe?.titulo || ''}>
         {projetoDetalhe && (
           <div>
-            <div className="bg-gradient-to-br from-violet-100 to-purple-50 rounded-xl h-48 flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-violet-100 to-purple-50 rounded-2xl h-48 flex items-center justify-center mb-6">
               <Palette size={64} className="text-violet-300" />
             </div>
             <span className="text-xs text-violet-600 font-medium">{projetoDetalhe.categoria}</span>
             <h3 className="text-xl font-bold mt-1 mb-3">{projetoDetalhe.titulo}</h3>
             <p className="text-gray-600 mb-6">{projetoDetalhe.desc}</p>
             <button onClick={() => { setProjetoDetalhe(null); setOrcamentoModal(true) }}
-              className="w-full bg-violet-600 text-white py-3 rounded-xl font-semibold hover:bg-violet-700 transition">
+              className="w-full bg-violet-600 text-white py-3 rounded-2xl font-semibold hover:bg-violet-700 transition">
               Quero um projeto assim
             </button>
           </div>
@@ -192,20 +193,20 @@ export default function ServicoIndividual() {
       <Modal open={orcamentoModal} onClose={() => setOrcamentoModal(false)} title="Solicitar Orçamento">
         <div className="space-y-3">
           <input type="text" placeholder="Nome *" value={formOrcamento.nome} onChange={e => setFormOrcamento({ ...formOrcamento, nome: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
           <input type="email" placeholder="E-mail *" value={formOrcamento.email} onChange={e => setFormOrcamento({ ...formOrcamento, email: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
           <input type="tel" placeholder="Telefone" value={formOrcamento.telefone} onChange={e => setFormOrcamento({ ...formOrcamento, telefone: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
           <select value={formOrcamento.servico} onChange={e => setFormOrcamento({ ...formOrcamento, servico: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 text-gray-600">
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 text-gray-600">
             <option value="">Selecione o serviço</option>
             {servicos.map((s, i) => <option key={i} value={s.nome}>{s.nome}</option>)}
           </select>
           <textarea placeholder="Conte sobre seu projeto..." rows={4} value={formOrcamento.mensagem} onChange={e => setFormOrcamento({ ...formOrcamento, mensagem: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none" />
         </div>
-        <button onClick={handleOrcamento} className="w-full mt-4 bg-violet-600 text-white py-3 rounded-xl font-semibold hover:bg-violet-700 transition">
+        <button onClick={handleOrcamento} className="w-full mt-4 bg-violet-600 text-white py-3 rounded-2xl font-semibold hover:bg-violet-700 transition">
           Enviar Solicitação
         </button>
       </Modal>
@@ -214,13 +215,13 @@ export default function ServicoIndividual() {
       <Modal open={contatoModal} onClose={() => setContatoModal(false)} title="Fale Comigo" size="sm">
         <div className="space-y-3">
           <input type="text" placeholder="Nome *" value={formContato.nome} onChange={e => setFormContato({ ...formContato, nome: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
           <input type="email" placeholder="E-mail *" value={formContato.email} onChange={e => setFormContato({ ...formContato, email: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500" />
           <textarea placeholder="Sua mensagem *" rows={4} value={formContato.mensagem} onChange={e => setFormContato({ ...formContato, mensagem: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none" />
         </div>
-        <button onClick={handleContato} className="w-full mt-4 bg-violet-600 text-white py-3 rounded-xl font-semibold hover:bg-violet-700 transition">Enviar</button>
+        <button onClick={handleContato} className="w-full mt-4 bg-violet-600 text-white py-3 rounded-2xl font-semibold hover:bg-violet-700 transition">Enviar</button>
       </Modal>
 
       {/* Processo */}
@@ -280,11 +281,11 @@ export default function ServicoIndividual() {
             Entre em contato e vamos conversar sobre como posso ajudar a transformar sua visão em realidade.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setContatoModal(true)} className="bg-white text-violet-700 px-8 py-3 rounded-full font-semibold hover:shadow-xl transition flex items-center gap-2">
+            <button onClick={() => setContatoModal(true)} className="bg-white text-violet-700 px-8 py-3 rounded-full font-semibold hover:shadow-2xl transition flex items-center gap-2">
               <MessageSquare size={18} /> Fale Comigo
             </button>
             <button className="border border-white/30 px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition flex items-center gap-2">
-              <Instagram size={18} /> @designer
+              <AtSign size={18} /> @designer
             </button>
           </div>
         </div>
@@ -295,11 +296,11 @@ export default function ServicoIndividual() {
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Studio Criativo — Todos os direitos reservados</p>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <div className="flex gap-6 text-sm text-gray-400">

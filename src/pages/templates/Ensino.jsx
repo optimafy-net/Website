@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState, useRef } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -6,7 +7,7 @@ import {
   GraduationCap, BookOpen, Users, Clock, Star, Award,
   ArrowRight, ChevronRight, Play, Monitor, FileText,
   CheckCircle, Calendar, Globe, Phone, Mail, MapPin,
-  TrendingUp, Lightbulb, Target, X
+  TrendingUp, Lightbulb, Target, X, AtSign
 } from 'lucide-react'
 
 const cursos = [
@@ -61,7 +62,7 @@ export default function Ensino() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="template-page min-h-screen bg-white antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -86,13 +87,13 @@ export default function Ensino() {
               <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => cursosRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-white text-indigo-900 px-8 py-3.5 rounded-lg font-semibold hover:shadow-xl transition flex items-center gap-2"
+                  className="bg-white text-indigo-900 px-8 py-3.5 rounded-2xl font-semibold hover:shadow-2xl transition flex items-center gap-2"
                 >
                   Explorar Cursos <ArrowRight size={18} />
                 </button>
                 <button
                   onClick={() => setAulaGratisModal(true)}
-                  className="border border-white/20 px-8 py-3.5 rounded-lg font-semibold hover:bg-white/5 transition flex items-center gap-2"
+                  className="border border-white/20 px-8 py-3.5 rounded-2xl font-semibold hover:bg-white/5 transition flex items-center gap-2"
                 >
                   <Play size={18} /> Aula Grátis
                 </button>
@@ -106,7 +107,7 @@ export default function Ensino() {
                 { num: '4.8', label: 'Avaliação Média', icon: Star },
                 { num: '92%', label: 'Empregabilidade', icon: TrendingUp },
               ].map((s, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
+                <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
                   <s.icon size={24} className="text-cyan-400 mb-3" />
                   <p className="text-2xl font-bold">{s.num}</p>
                   <p className="text-sm text-blue-300">{s.label}</p>
@@ -127,7 +128,7 @@ export default function Ensino() {
             { icon: Lightbulb, titulo: 'Mentoria', desc: 'Acompanhamento individual de carreira' },
           ].map((d, i) => (
             <div key={i} className="text-center group">
-              <div className="inline-flex p-3 bg-indigo-100 rounded-xl mb-3 group-hover:bg-indigo-600 transition-colors">
+              <div className="inline-flex p-3 bg-indigo-100 rounded-2xl mb-3 group-hover:bg-indigo-600 transition-colors">
                 <d.icon size={24} className="text-indigo-600 group-hover:text-white transition-colors" />
               </div>
               <h3 className="font-bold mb-1">{d.titulo}</h3>
@@ -163,11 +164,11 @@ export default function Ensino() {
             {cursosFiltrados.map((c) => {
               const matriculado = matriculas.includes(c.id)
               return (
-                <div key={c.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+                <div key={c.id} className="bg-white rounded-2xl overflow-hidden shadow-md shadow-black/5 hover:shadow-2xl transition-all group">
                   <div className="h-40 bg-gradient-to-br from-indigo-100 to-blue-50 flex items-center justify-center relative">
                     <BookOpen size={48} className="text-indigo-200 group-hover:text-indigo-400 transition-colors" />
-                    <span className="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded-lg font-medium">{c.formato}</span>
-                    <span className={`absolute top-3 right-3 text-xs px-2 py-1 rounded-lg font-medium ${
+                    <span className="absolute top-3 left-3 bg-indigo-600 text-white text-xs px-2 py-1 rounded-2xl font-medium">{c.formato}</span>
+                    <span className={`absolute top-3 right-3 text-xs px-2 py-1 rounded-2xl font-medium ${
                       c.nivel === 'Iniciante' ? 'bg-green-100 text-green-600' :
                       c.nivel === 'Intermediário' ? 'bg-yellow-100 text-yellow-600' :
                       'bg-red-100 text-red-600'
@@ -190,7 +191,7 @@ export default function Ensino() {
                       <span className="text-lg font-bold text-indigo-700">R$ {c.preco}/mês</span>
                       <button
                         onClick={() => matriculado ? null : setMatriculaModal(c)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                        className={`px-4 py-2 rounded-2xl text-sm font-medium transition ${
                           matriculado
                             ? 'bg-green-100 text-green-700'
                             : 'bg-indigo-600 text-white hover:bg-indigo-700'
@@ -211,7 +212,7 @@ export default function Ensino() {
       <Modal open={!!matriculaModal} onClose={() => setMatriculaModal(null)} title="Matrícula">
         {matriculaModal && (
           <div>
-            <div className="bg-indigo-50 rounded-xl p-4 mb-6">
+            <div className="bg-indigo-50 rounded-2xl p-4 mb-6">
               <h3 className="font-bold text-indigo-800">{matriculaModal.titulo}</h3>
               <div className="flex flex-wrap gap-3 mt-2 text-sm text-indigo-600">
                 <span>{matriculaModal.duracao}</span>
@@ -224,13 +225,13 @@ export default function Ensino() {
             </div>
             <div className="space-y-3">
               <input type="text" placeholder="Nome completo *" value={formMatricula.nome} onChange={e => setFormMatricula({ ...formMatricula, nome: e.target.value })}
-                className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
               <input type="email" placeholder="E-mail *" value={formMatricula.email} onChange={e => setFormMatricula({ ...formMatricula, email: e.target.value })}
-                className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
               <input type="tel" placeholder="Telefone" value={formMatricula.telefone} onChange={e => setFormMatricula({ ...formMatricula, telefone: e.target.value })}
-                className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
             </div>
-            <button onClick={handleMatricula} className="w-full mt-6 bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition flex items-center justify-center gap-2">
+            <button onClick={handleMatricula} className="w-full mt-6 bg-indigo-600 text-white py-3 rounded-2xl font-semibold hover:bg-indigo-700 transition flex items-center justify-center gap-2">
               <GraduationCap size={16} /> Confirmar Matrícula
             </button>
           </div>
@@ -245,11 +246,11 @@ export default function Ensino() {
         </div>
         <div className="space-y-3">
           <input type="text" placeholder="Seu nome *" value={formMatricula.nome} onChange={e => setFormMatricula({ ...formMatricula, nome: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           <input type="email" placeholder="Seu e-mail *" value={formMatricula.email} onChange={e => setFormMatricula({ ...formMatricula, email: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
         </div>
-        <button onClick={handleAulaGratis} className="w-full mt-4 bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition flex items-center justify-center gap-2">
+        <button onClick={handleAulaGratis} className="w-full mt-4 bg-indigo-600 text-white py-3 rounded-2xl font-semibold hover:bg-indigo-700 transition flex items-center justify-center gap-2">
           <Play size={16} /> Acessar Aula Grátis
         </button>
       </Modal>
@@ -262,7 +263,7 @@ export default function Ensino() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {depoimentos.map((d, i) => (
-            <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+            <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-2xl transition-shadow">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, j) => (
                   <Star key={j} size={14} className="text-yellow-400 fill-yellow-400" />
@@ -285,7 +286,7 @@ export default function Ensino() {
           <p className="text-indigo-100 mb-8">Primeira aula gratuita em qualquer curso. Sem compromisso.</p>
           <button
             onClick={() => setAulaGratisModal(true)}
-            className="bg-white text-indigo-700 px-8 py-3.5 rounded-lg font-semibold hover:shadow-xl transition flex items-center gap-2 mx-auto"
+            className="bg-white text-indigo-700 px-8 py-3.5 rounded-2xl font-semibold hover:shadow-2xl transition flex items-center gap-2 mx-auto"
           >
             <GraduationCap size={18} /> Começar Agora
           </button>
@@ -297,11 +298,11 @@ export default function Ensino() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2"><GraduationCap size={20} className="text-blue-400" /><span className="font-bold">Educa+</span></div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>

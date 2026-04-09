@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState, useRef } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -6,7 +7,7 @@ import {
   Calendar, MapPin, Clock, Users, Ticket, Star,
   ArrowRight, ChevronRight, Music, Mic2, Camera,
   PartyPopper, Heart, Share2, Filter, Search, Phone, Mail,
-  CheckCircle, X
+  CheckCircle, X, AtSign
 } from 'lucide-react'
 
 const eventosData = [
@@ -57,7 +58,7 @@ export default function Eventos() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="template-page min-h-screen bg-white antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -81,7 +82,7 @@ export default function Eventos() {
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => eventosRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-pink-700 px-8 py-3.5 rounded-full font-semibold hover:shadow-xl transition flex items-center gap-2"
+                className="bg-white text-pink-700 px-8 py-3.5 rounded-full font-semibold hover:shadow-2xl transition flex items-center gap-2"
               >
                 Explorar Eventos <ArrowRight size={18} />
               </button>
@@ -98,7 +99,7 @@ export default function Eventos() {
               <button
                 key={i}
                 onClick={() => { setTipoAtivo(c.label === 'Palestras' ? 'Conferência' : c.label === 'Workshops' ? 'Workshop' : c.label === 'Festivais' ? 'Festival' : 'Show'); eventosRef.current?.scrollIntoView({ behavior: 'smooth' }) }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition group"
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center hover:bg-white/20 transition group"
               >
                 <c.icon size={24} className="mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <span className="text-xs">{c.label}</span>
@@ -166,7 +167,7 @@ export default function Eventos() {
                   <button
                     onClick={() => inscricoes.includes(ev.id) ? null : setInscricaoModal(ev)}
                     className={`px-6 py-2 rounded-full font-semibold transition flex items-center gap-2 text-sm ${
-                      inscricoes.includes(ev.id) ? 'bg-green-500 text-white' : 'bg-white text-pink-700 hover:shadow-lg'
+                      inscricoes.includes(ev.id) ? 'bg-green-500 text-white' : 'bg-white text-pink-700 hover:shadow-2xl'
                     }`}
                   >
                     {inscricoes.includes(ev.id) ? <><CheckCircle size={14} /> Inscrito</> : <><Ticket size={14} /> Garantir Ingresso</>}
@@ -183,8 +184,8 @@ export default function Eventos() {
         <h2 className="text-2xl font-bold mb-6">Próximos Eventos</h2>
         <div className="space-y-4">
           {eventosFiltrados.map((ev) => (
-            <div key={ev.id} className="group bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-lg hover:border-pink-100 transition-all flex flex-col md:flex-row items-start md:items-center gap-4">
-              <div className="bg-pink-50 rounded-xl p-4 text-center min-w-[80px]">
+            <div key={ev.id} className="group bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-2xl hover:border-pink-100 transition-all flex flex-col md:flex-row items-start md:items-center gap-4">
+              <div className="bg-pink-50 rounded-2xl p-4 text-center min-w-[80px]">
                 <span className="text-2xl font-bold text-pink-600">{ev.data.split(' ')[0]}</span>
                 <p className="text-xs text-pink-400 uppercase font-medium">{ev.data.split(' ')[1]}</p>
               </div>
@@ -226,7 +227,7 @@ export default function Eventos() {
       <Modal open={!!inscricaoModal} onClose={() => setInscricaoModal(null)} title="Inscrição no Evento">
         {inscricaoModal && (
           <div>
-            <div className="bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl p-5 text-white mb-6">
+            <div className="bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-5 text-white mb-6">
               <h3 className="text-lg font-bold">{inscricaoModal.titulo}</h3>
               <div className="flex flex-wrap gap-3 mt-2 text-pink-100 text-sm">
                 <span className="flex items-center gap-1"><Calendar size={14} /> {inscricaoModal.data}</span>
@@ -241,21 +242,21 @@ export default function Eventos() {
                 placeholder="Nome completo *"
                 value={formInscricao.nome}
                 onChange={e => setFormInscricao({ ...formInscricao, nome: e.target.value })}
-                className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
               />
               <input
                 type="email"
                 placeholder="E-mail *"
                 value={formInscricao.email}
                 onChange={e => setFormInscricao({ ...formInscricao, email: e.target.value })}
-                className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
               />
               <div className="flex items-center gap-3">
                 <label className="text-sm text-gray-600">Ingressos:</label>
                 <select
                   value={formInscricao.qtd}
                   onChange={e => setFormInscricao({ ...formInscricao, qtd: +e.target.value })}
-                  className="border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="border rounded-2xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
                   {[1,2,3,4,5].map(n => <option key={n} value={n}>{n}</option>)}
                 </select>
@@ -268,7 +269,7 @@ export default function Eventos() {
             </div>
             <button
               onClick={handleInscricao}
-              className="w-full mt-6 bg-pink-600 text-white py-3 rounded-xl font-semibold hover:bg-pink-700 transition flex items-center justify-center gap-2"
+              className="w-full mt-6 bg-pink-600 text-white py-3 rounded-2xl font-semibold hover:bg-pink-700 transition flex items-center justify-center gap-2"
             >
               <Ticket size={16} /> Confirmar Inscrição
             </button>
@@ -307,11 +308,11 @@ export default function Eventos() {
             <span className="font-bold">EventosBR</span>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>

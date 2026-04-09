@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState, useRef } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -5,7 +6,7 @@ import { useToast } from '../../components/Toast'
 import {
   UtensilsCrossed, Clock, MapPin, Phone, Star,
   ArrowRight, ChevronRight, Flame, Leaf, Wine,
-  Coffee, IceCream, Instagram, Facebook, Award,
+  Coffee, IceCream, AtSign, Globe, Award,
   CalendarCheck, Users, Heart, CheckCircle, Plus
 } from 'lucide-react'
 
@@ -74,7 +75,7 @@ export default function Restaurante() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="template-page min-h-screen bg-stone-50 antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -131,8 +132,8 @@ export default function Restaurante() {
             { icon: Leaf, titulo: 'Ingredientes Orgânicos', desc: 'Do campo direto para sua mesa' },
             { icon: Wine, titulo: 'Carta de Vinhos', desc: '+200 rótulos nacionais e importados' },
           ].map((d, i) => (
-            <div key={i} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow text-center group">
-              <div className="inline-flex p-3 bg-amber-100 rounded-xl mb-3 group-hover:bg-amber-600 transition-colors">
+            <div key={i} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-shadow text-center group">
+              <div className="inline-flex p-3 bg-amber-100 rounded-2xl mb-3 group-hover:bg-amber-600 transition-colors">
                 <d.icon size={24} className="text-amber-600 group-hover:text-white transition-colors" />
               </div>
               <h3 className="font-bold mb-1">{d.titulo}</h3>
@@ -177,7 +178,7 @@ export default function Restaurante() {
 
         <div className="max-w-2xl mx-auto space-y-4">
           {cardapio[catAtiva]?.map((item, i) => (
-            <div key={i} className="bg-white rounded-xl p-5 flex items-start justify-between gap-4 hover:shadow-md transition-shadow group">
+            <div key={i} className="bg-white rounded-2xl p-5 flex items-start justify-between gap-4 hover:shadow-md transition-shadow group">
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   <h3 className="font-bold group-hover:text-amber-600 transition-colors">{item.nome}</h3>
@@ -197,7 +198,7 @@ export default function Restaurante() {
                 <span className="text-lg font-bold text-amber-600">R$ {item.preco}</span>
                 <button
                   onClick={() => addPedido(item)}
-                  className="p-2 rounded-lg bg-amber-100 hover:bg-amber-600 text-amber-600 hover:text-white transition"
+                  className="p-2 rounded-2xl bg-amber-100 hover:bg-amber-600 text-amber-600 hover:text-white transition"
                 >
                   <Plus size={16} />
                 </button>
@@ -218,7 +219,7 @@ export default function Restaurante() {
           <>
             <div className="space-y-3">
               {pedido.map((item, i) => (
-                <div key={i} className="flex items-center justify-between bg-gray-50 rounded-xl p-3">
+                <div key={i} className="flex items-center justify-between bg-gray-50 rounded-2xl p-3">
                   <div>
                     <p className="font-medium text-sm">{item.nome}</p>
                     <p className="text-xs text-gray-500">{item.qtd}x R$ {item.preco}</p>
@@ -240,7 +241,7 @@ export default function Restaurante() {
                 setPedido([])
                 setPedidoAberto(false)
               }}
-              className="w-full mt-4 bg-amber-600 text-white py-3 rounded-xl font-semibold hover:bg-amber-700 transition"
+              className="w-full mt-4 bg-amber-600 text-white py-3 rounded-2xl font-semibold hover:bg-amber-700 transition"
             >
               Enviar Pedido — R$ {totalPedido}
             </button>
@@ -281,32 +282,32 @@ export default function Restaurante() {
                   placeholder="Seu nome *"
                   value={reserva.nome}
                   onChange={e => setReserva({ ...reserva, nome: e.target.value })}
-                  className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
                 <input
                   type="tel"
                   placeholder="Telefone"
                   value={reserva.telefone}
                   onChange={e => setReserva({ ...reserva, telefone: e.target.value })}
-                  className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
                 <input
                   type="date"
                   value={reserva.data}
                   onChange={e => setReserva({ ...reserva, data: e.target.value })}
-                  className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
                 <input
                   type="time"
                   value={reserva.hora}
                   onChange={e => setReserva({ ...reserva, hora: e.target.value })}
-                  className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
                 />
               </div>
               <select
                 value={reserva.pessoas}
                 onChange={e => setReserva({ ...reserva, pessoas: e.target.value })}
-                className="mt-4 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                className="mt-4 bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
               >
                 <option>2 pessoas</option>
                 <option>4 pessoas</option>
@@ -334,11 +335,11 @@ export default function Restaurante() {
             <span className="font-bold">Alma Gastronomia</span>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-stone-500">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>

@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState, useEffect, useRef } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -6,7 +7,7 @@ import {
   ShoppingCart, Search, MapPin, Clock, Phone, Star,
   Truck, CreditCard, Percent, ChevronRight, Heart,
   Apple, Beef, Milk, Cookie, Wine, Sparkles, Tag,
-  ArrowRight, BadgePercent, Gift, Users, X, Plus, Minus, Trash2
+  ArrowRight, BadgePercent, Gift, Users, X, Plus, Minus, Trash2, AtSign, Mail
 } from 'lucide-react'
 
 const categorias = [
@@ -120,7 +121,7 @@ export default function Supermercado() {
   const totalItens = carrinho.reduce((acc, i) => acc + i.qtd, 0)
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="template-page min-h-screen bg-gray-50 antialiased">
       <BackToHome />
 
       {/* Top bar */}
@@ -135,10 +136,10 @@ export default function Supermercado() {
       </div>
 
       {/* HEADER SECTION */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
+      <header className="bg-white shadow-md shadow-black/5 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="bg-green-600 text-white p-2 rounded-lg">
+            <div className="bg-green-600 text-white p-2 rounded-2xl">
               <ShoppingCart size={24} />
             </div>
             <div>
@@ -193,7 +194,7 @@ export default function Supermercado() {
             <p className="text-lg opacity-90 mb-6">{banners[bannerIdx].subtitulo}</p>
             <button
               onClick={() => ofertasRef.current?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-green-700 px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition flex items-center gap-2"
+              className="bg-white text-green-700 px-6 py-2.5 rounded-full font-semibold hover:shadow-2xl transition flex items-center gap-2"
             >
               Ver ofertas <ArrowRight size={16} />
             </button>
@@ -219,8 +220,8 @@ export default function Supermercado() {
             { icon: Percent, text: 'Até 40% OFF', sub: 'Ofertas diárias' },
             { icon: Gift, text: 'Clube de Pontos', sub: 'Ganhe a cada compra' },
           ].map((f, i) => (
-            <div key={i} className="bg-white rounded-xl p-4 flex items-center gap-3 shadow-sm hover:shadow-md transition">
-              <div className="bg-green-100 p-2 rounded-lg">
+            <div key={i} className="bg-white rounded-2xl p-4 flex items-center gap-3 shadow-md shadow-black/5 hover:shadow-md transition">
+              <div className="bg-green-100 p-2 rounded-2xl">
                 <f.icon size={20} className="text-green-600" />
               </div>
               <div>
@@ -247,9 +248,9 @@ export default function Supermercado() {
             <button
               key={i}
               onClick={() => { setCatFiltro(catFiltro === cat.nome ? null : cat.nome); setBusca('') }}
-              className={`bg-white rounded-xl p-4 flex flex-col items-center gap-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group ${catFiltro === cat.nome ? 'ring-2 ring-green-500 shadow-lg' : ''}`}
+              className={`bg-white rounded-2xl p-4 flex flex-col items-center gap-3 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group ${catFiltro === cat.nome ? 'ring-2 ring-green-500 shadow-lg' : ''}`}
             >
-              <div className={`p-3 rounded-xl ${cat.cor} group-hover:scale-110 transition-transform`}>
+              <div className={`p-3 rounded-2xl ${cat.cor} group-hover:scale-110 transition-transform`}>
                 <cat.icon size={24} />
               </div>
               <span className="text-sm font-medium text-gray-700">{cat.nome}</span>
@@ -279,8 +280,8 @@ export default function Supermercado() {
             const isFav = favoritos.some(f => f.id === p.id)
             const noCarrinho = carrinho.find(c => c.id === p.id)
             return (
-              <div key={p.id} className="bg-white rounded-xl p-4 hover:shadow-lg transition-shadow group relative overflow-hidden">
-                <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
+              <div key={p.id} className="bg-white rounded-2xl p-4 hover:shadow-2xl transition-shadow group relative overflow-hidden">
+                <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-2xl">
                   -{p.desconto}
                 </span>
                 <button
@@ -289,7 +290,7 @@ export default function Supermercado() {
                 >
                   <Heart size={16} className={isFav ? 'text-red-500 fill-red-500' : 'text-gray-300 group-hover:text-gray-400'} />
                 </button>
-                <div className="bg-gray-100 rounded-lg h-40 flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors">
+                <div className="bg-gray-100 rounded-2xl h-40 flex items-center justify-center mb-4 group-hover:bg-green-50 transition-colors">
                   <ShoppingCart size={40} className="text-gray-300 group-hover:text-green-300 transition-colors" />
                 </div>
                 <span className="text-xs text-green-600 font-medium">{p.categoria}</span>
@@ -305,7 +306,7 @@ export default function Supermercado() {
                   <span className="text-xs text-gray-400 ml-1">({Math.floor(Math.random() * 200 + 50)})</span>
                 </div>
                 {noCarrinho ? (
-                  <div className="w-full mt-4 flex items-center justify-between bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+                  <div className="w-full mt-4 flex items-center justify-between bg-green-50 border border-green-200 rounded-2xl px-3 py-2">
                     <button onClick={() => updateQtd(p.id, -1)} className="p-1 hover:bg-green-100 rounded transition"><Minus size={16} className="text-green-700" /></button>
                     <span className="font-bold text-green-700">{noCarrinho.qtd} no carrinho</span>
                     <button onClick={() => updateQtd(p.id, 1)} className="p-1 hover:bg-green-100 rounded transition"><Plus size={16} className="text-green-700" /></button>
@@ -313,7 +314,7 @@ export default function Supermercado() {
                 ) : (
                   <button
                     onClick={() => addCarrinho(p)}
-                    className="w-full mt-4 bg-green-600 text-white py-2.5 rounded-lg font-medium hover:bg-green-700 transition flex items-center justify-center gap-2"
+                    className="w-full mt-4 bg-green-600 text-white py-2.5 rounded-2xl font-medium hover:bg-green-700 transition flex items-center justify-center gap-2"
                   >
                     <ShoppingCart size={16} /> Adicionar
                   </button>
@@ -360,7 +361,7 @@ export default function Supermercado() {
               <h3 className="text-lg font-bold flex items-center gap-2">
                 <ShoppingCart size={20} className="text-green-600" /> Carrinho ({totalItens})
               </h3>
-              <button onClick={() => setCarrinhoAberto(false)} className="p-1.5 hover:bg-gray-100 rounded-lg"><X size={18} /></button>
+              <button onClick={() => setCarrinhoAberto(false)} className="p-1.5 hover:bg-gray-100 rounded-2xl"><X size={18} /></button>
             </div>
             <div className="flex-1 overflow-y-auto p-5 space-y-4">
               {carrinho.length === 0 ? (
@@ -370,8 +371,8 @@ export default function Supermercado() {
                   <button onClick={() => setCarrinhoAberto(false)} className="mt-3 text-green-600 font-semibold hover:underline">Continuar comprando</button>
                 </div>
               ) : carrinho.map(item => (
-                <div key={item.id} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
-                  <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center shrink-0">
+                <div key={item.id} className="flex items-center gap-3 bg-gray-50 rounded-2xl p-3">
+                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center shrink-0">
                     <ShoppingCart size={20} className="text-green-300" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -393,7 +394,7 @@ export default function Supermercado() {
             {carrinho.length > 0 && (
               <div className="border-t p-5 space-y-3">
                 {totalCarrinho >= 150 && (
-                  <div className="flex items-center gap-2 text-green-600 text-sm bg-green-50 p-2 rounded-lg">
+                  <div className="flex items-center gap-2 text-green-600 text-sm bg-green-50 p-2 rounded-2xl">
                     <Truck size={14} /> Frete grátis aplicado!
                   </div>
                 )}
@@ -412,7 +413,7 @@ export default function Supermercado() {
                     setCarrinho([])
                     setCarrinhoAberto(false)
                   }}
-                  className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition"
+                  className="w-full bg-green-600 text-white py-3 rounded-2xl font-semibold hover:bg-green-700 transition"
                 >
                   Finalizar Compra — {fmt(totalCarrinho)}
                 </button>
@@ -432,8 +433,8 @@ export default function Supermercado() {
         ) : (
           <div className="space-y-3">
             {favoritos.map(p => (
-              <div key={p.id} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center shrink-0">
+              <div key={p.id} className="flex items-center gap-3 bg-gray-50 rounded-2xl p-3">
+                <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center shrink-0">
                   <ShoppingCart size={16} className="text-green-300" />
                 </div>
                 <div className="flex-1">
@@ -443,7 +444,7 @@ export default function Supermercado() {
                 <div className="flex gap-2">
                   <button
                     onClick={() => { addCarrinho(p); setFavoritosAberto(false); setCarrinhoAberto(true) }}
-                    className="text-xs bg-green-600 text-white px-3 py-1.5 rounded-lg hover:bg-green-700 transition"
+                    className="text-xs bg-green-600 text-white px-3 py-1.5 rounded-2xl hover:bg-green-700 transition"
                   >
                     Comprar
                   </button>
@@ -494,11 +495,11 @@ export default function Supermercado() {
                 <li className="flex items-center gap-2"><Clock size={14} /> 7h às 22h</li>
               </ul>
               <div className="flex gap-4 mt-4">
-                <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-                  <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+                <a href="#" className="template-social-link">
+                  <AtSign size={18} />
                 </a>
-                <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-                  <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+                <a href="#" className="template-social-link">
+                  <Mail size={18} />
                 </a>
               </div>
             </div>

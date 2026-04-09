@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -6,7 +7,7 @@ import {
   Building2, Search, MapPin, Bed, Bath, Car, Maximize,
   Heart, Eye, ArrowRight, ChevronRight, Phone, Mail,
   Star, Filter, Grid3X3, List, Home, Key, TrendingUp,
-  DollarSign, Users, Award, ChevronDown, Calendar, X, CheckCircle
+  DollarSign, Users, Award, ChevronDown, Calendar, X, CheckCircle, AtSign
 } from 'lucide-react'
 
 const tipos = ['Todos', 'Apartamento', 'Casa', 'Comercial', 'Terreno']
@@ -64,7 +65,7 @@ export default function Imobiliaria() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="template-page min-h-screen bg-gray-50 antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -81,13 +82,13 @@ export default function Imobiliaria() {
               <div className="relative md:col-span-2">
                 <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-sky-300" />
                 <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)}
-                  placeholder="Buscar por bairro, cidade ou tipo..." className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl placeholder-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-400 transition text-sm" />
+                  placeholder="Buscar por bairro, cidade ou tipo..." className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-2xl placeholder-sky-300 focus:outline-none focus:ring-2 focus:ring-sky-400 transition text-sm" />
               </div>
-              <select className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-400">
+              <select className="bg-white/10 border border-white/20 rounded-2xl px-4 py-3 text-sm text-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-400">
                 <option>Comprar</option><option>Alugar</option>
               </select>
               <button onClick={() => document.getElementById('listagem')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-sky-500 hover:bg-sky-600 rounded-xl px-6 py-3 font-semibold transition flex items-center justify-center gap-2 text-sm">
+                className="bg-sky-500 hover:bg-sky-600 rounded-2xl px-6 py-3 font-semibold transition flex items-center justify-center gap-2 text-sm">
                 <Search size={16} /> Buscar Imóveis
               </button>
             </div>
@@ -104,7 +105,7 @@ export default function Imobiliaria() {
             { icon: Key, num: '500+', label: 'Negociados/ano' },
             { icon: Star, num: '4.9', label: 'Avaliação' },
           ].map((n, i) => (
-            <div key={i} className="bg-white rounded-xl p-4 shadow-lg text-center hover:shadow-xl transition">
+            <div key={i} className="bg-white rounded-2xl p-4 shadow-lg text-center hover:shadow-2xl transition">
               <n.icon size={22} className="text-sky-600 mx-auto mb-2" /><p className="text-xl font-bold">{n.num}</p><p className="text-xs text-gray-500">{n.label}</p>
             </div>
           ))}
@@ -117,7 +118,7 @@ export default function Imobiliaria() {
           <h2 className="text-2xl font-bold mb-6">Imóveis em Destaque</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {imoveis.filter(i => i.destaque).map((im) => (
-              <div key={im.id} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-pointer" onClick={() => setDetalhe(im)}>
+              <div key={im.id} className="group bg-white rounded-2xl overflow-hidden shadow-md shadow-black/5 hover:shadow-2xl transition-all cursor-pointer" onClick={() => setDetalhe(im)}>
                 <div className="relative h-64 bg-gradient-to-br from-sky-100 to-blue-50 flex items-center justify-center">
                   <Home size={64} className="text-sky-200 group-hover:text-sky-300 transition-colors" />
                   <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold ${im.modalidade === 'Venda' ? 'bg-sky-600 text-white' : 'bg-amber-500 text-white'}`}>{im.modalidade}</span>
@@ -164,7 +165,7 @@ export default function Imobiliaria() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {imoveisFiltrados.map((im) => (
-            <div key={im.id} className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all cursor-pointer" onClick={() => setDetalhe(im)}>
+            <div key={im.id} className="group bg-white rounded-2xl overflow-hidden shadow-md shadow-black/5 hover:shadow-2xl transition-all cursor-pointer" onClick={() => setDetalhe(im)}>
               <div className="relative h-44 bg-gradient-to-br from-sky-50 to-blue-50 flex items-center justify-center">
                 <Home size={40} className="text-sky-200 group-hover:text-sky-300 transition-colors" />
                 <span className={`absolute top-3 left-3 px-2 py-0.5 rounded-full text-xs font-semibold ${im.modalidade === 'Venda' ? 'bg-sky-600 text-white' : 'bg-amber-500 text-white'}`}>{im.modalidade}</span>
@@ -199,7 +200,7 @@ export default function Imobiliaria() {
       <Modal open={!!detalhe} onClose={() => setDetalhe(null)} title="Detalhes do Imóvel" size="lg">
         {detalhe && (
           <div>
-            <div className="bg-gradient-to-br from-sky-100 to-blue-50 rounded-xl h-56 flex items-center justify-center mb-6">
+            <div className="bg-gradient-to-br from-sky-100 to-blue-50 rounded-2xl h-56 flex items-center justify-center mb-6">
               <Home size={80} className="text-sky-200" />
             </div>
             <div className="flex items-start justify-between mb-4">
@@ -211,7 +212,7 @@ export default function Imobiliaria() {
               <span className="text-2xl font-bold text-sky-600">{detalhe.preco}</span>
             </div>
             <p className="text-gray-600 mb-4">{detalhe.desc}</p>
-            <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-6 bg-gray-50 rounded-xl p-4">
+            <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-6 bg-gray-50 rounded-2xl p-4">
               <span className="flex items-center gap-1"><Maximize size={16} /> {detalhe.area}</span>
               {detalhe.quartos > 0 && <span className="flex items-center gap-1"><Bed size={16} /> {detalhe.quartos} quartos</span>}
               {detalhe.banheiros > 0 && <span className="flex items-center gap-1"><Bath size={16} /> {detalhe.banheiros} banheiros</span>}
@@ -219,15 +220,15 @@ export default function Imobiliaria() {
             </div>
             <div className="flex gap-3">
               <button onClick={() => { setDetalhe(null); setContatoModal(detalhe) }}
-                className="flex-1 bg-sky-600 text-white py-3 rounded-xl font-semibold hover:bg-sky-700 transition flex items-center justify-center gap-2">
+                className="flex-1 bg-sky-600 text-white py-3 rounded-2xl font-semibold hover:bg-sky-700 transition flex items-center justify-center gap-2">
                 <Phone size={16} /> Falar com Corretor
               </button>
               <button onClick={() => { setDetalhe(null); setVisitaModal(detalhe) }}
-                className="flex-1 border border-sky-200 py-3 rounded-xl font-semibold text-sky-600 hover:bg-sky-50 transition flex items-center justify-center gap-2">
+                className="flex-1 border border-sky-200 py-3 rounded-2xl font-semibold text-sky-600 hover:bg-sky-50 transition flex items-center justify-center gap-2">
                 <Calendar size={16} /> Agendar Visita
               </button>
               <button onClick={() => toggleFav(detalhe.id)}
-                className={`p-3 rounded-xl border transition ${favoritos.includes(detalhe.id) ? 'bg-red-50 border-red-200' : 'hover:bg-gray-50'}`}>
+                className={`p-3 rounded-2xl border transition ${favoritos.includes(detalhe.id) ? 'bg-red-50 border-red-200' : 'hover:bg-gray-50'}`}>
                 <Heart size={20} className={favoritos.includes(detalhe.id) ? 'text-red-500 fill-red-500' : 'text-gray-400'} />
               </button>
             </div>
@@ -239,30 +240,30 @@ export default function Imobiliaria() {
       <Modal open={!!contatoModal} onClose={() => setContatoModal(null)} title="Falar com Corretor" size="sm">
         <div className="space-y-3">
           <input type="text" placeholder="Nome *" value={formContato.nome} onChange={e => setFormContato({ ...formContato, nome: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
           <input type="email" placeholder="E-mail *" value={formContato.email} onChange={e => setFormContato({ ...formContato, email: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
           <input type="tel" placeholder="Telefone" value={formContato.telefone} onChange={e => setFormContato({ ...formContato, telefone: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
           <textarea placeholder="Mensagem" rows={3} value={formContato.mensagem} onChange={e => setFormContato({ ...formContato, mensagem: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 resize-none" />
         </div>
-        <button onClick={handleContato} className="w-full mt-4 bg-sky-600 text-white py-3 rounded-xl font-semibold hover:bg-sky-700 transition">Enviar Mensagem</button>
+        <button onClick={handleContato} className="w-full mt-4 bg-sky-600 text-white py-3 rounded-2xl font-semibold hover:bg-sky-700 transition">Enviar Mensagem</button>
       </Modal>
 
       {/* Visita Modal */}
       <Modal open={!!visitaModal} onClose={() => setVisitaModal(null)} title="Agendar Visita" size="sm">
         <div className="space-y-3">
           <input type="text" placeholder="Nome *" value={formVisita.nome} onChange={e => setFormVisita({ ...formVisita, nome: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
           <input type="tel" placeholder="Telefone" value={formVisita.telefone} onChange={e => setFormVisita({ ...formVisita, telefone: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
           <input type="date" value={formVisita.data} onChange={e => setFormVisita({ ...formVisita, data: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
           <input type="time" value={formVisita.hora} onChange={e => setFormVisita({ ...formVisita, hora: e.target.value })}
-            className="w-full px-4 py-2.5 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            className="w-full px-4 py-2.5 border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
         </div>
-        <button onClick={handleVisita} className="w-full mt-4 bg-sky-600 text-white py-3 rounded-xl font-semibold hover:bg-sky-700 transition flex items-center justify-center gap-2">
+        <button onClick={handleVisita} className="w-full mt-4 bg-sky-600 text-white py-3 rounded-2xl font-semibold hover:bg-sky-700 transition flex items-center justify-center gap-2">
           <Calendar size={16} /> Confirmar Visita
         </button>
       </Modal>
@@ -273,10 +274,10 @@ export default function Imobiliaria() {
           <h2 className="text-3xl font-bold mb-4">Não encontrou o imóvel ideal?</h2>
           <p className="text-sky-100 mb-8">Fale com um de nossos corretores e encontre a melhor opção para você.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button onClick={() => setContatoModal({})} className="bg-white text-sky-700 px-8 py-3.5 rounded-lg font-semibold hover:shadow-xl transition flex items-center gap-2">
+            <button onClick={() => setContatoModal({})} className="bg-white text-sky-700 px-8 py-3.5 rounded-2xl font-semibold hover:shadow-2xl transition flex items-center gap-2">
               <Phone size={18} /> Falar com Corretor
             </button>
-            <button onClick={() => setVisitaModal({})} className="border border-white/30 px-8 py-3.5 rounded-lg font-semibold hover:bg-white/10 transition flex items-center gap-2">
+            <button onClick={() => setVisitaModal({})} className="border border-white/30 px-8 py-3.5 rounded-2xl font-semibold hover:bg-white/10 transition flex items-center gap-2">
               <Calendar size={18} /> Agendar Visita
             </button>
           </div>
@@ -288,11 +289,11 @@ export default function Imobiliaria() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2"><Building2 size={20} className="text-sky-400" /><span className="font-bold">Prime Imóveis</span></div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>

@@ -1,3 +1,4 @@
+import './templates.css'
 import { useState } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
@@ -6,7 +7,7 @@ import {
   Search, Filter, Grid3X3, List, Star, ShoppingCart,
   Heart, Eye, Cpu, Wrench, Zap, ChevronDown,
   ArrowUpDown, Package, Truck, Shield, Headphones,
-  Phone, Mail, MapPin, X, Plus, Minus, Trash2
+  Phone, Mail, MapPin, X, Plus, Minus, Trash2, AtSign
 } from 'lucide-react'
 
 const categorias = ['Todos', 'Eletrônicos', 'Peças Automotivas', 'Gráfica', 'Informática', 'Ferramentas']
@@ -95,7 +96,7 @@ export default function ComercioFocado() {
   const totalItens = carrinho.reduce((a, i) => a + i.qtd, 0)
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="template-page min-h-screen bg-gray-50 antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -103,7 +104,7 @@ export default function ComercioFocado() {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="bg-white/10 p-2 rounded-lg backdrop-blur-sm">
+              <div className="bg-white/10 p-2 rounded-2xl backdrop-blur-sm">
                 <Cpu size={28} />
               </div>
               <div>
@@ -116,7 +117,7 @@ export default function ComercioFocado() {
                 <span className="flex items-center gap-1"><Phone size={14} /> (11) 4000-1234</span>
                 <span className="flex items-center gap-1"><Mail size={14} /> contato@techparts.com</span>
               </div>
-              <button onClick={() => setCarrinhoAberto(true)} className="relative flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-xl hover:bg-white/20 transition text-sm">
+              <button onClick={() => setCarrinhoAberto(true)} className="relative flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-2xl hover:bg-white/20 transition text-sm">
                 <ShoppingCart size={18} />
                 <span className="hidden sm:inline">Carrinho</span>
                 {totalItens > 0 && <span className="bg-cyan-400 text-blue-900 text-xs font-bold px-1.5 py-0.5 rounded-full">{totalItens}</span>}
@@ -131,7 +132,7 @@ export default function ComercioFocado() {
               value={busca}
               onChange={(e) => setBusca(e.target.value)}
               placeholder="Buscar por produto, código, marca..."
-              className="w-full pl-11 pr-10 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/20 transition"
+              className="w-full pl-11 pr-10 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:bg-white/20 transition"
             />
             {busca && (
               <button onClick={() => setBusca('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-300 hover:text-white">
@@ -163,7 +164,7 @@ export default function ComercioFocado() {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar filtros */}
           <aside className="lg:w-64 shrink-0">
-            <div className="bg-white rounded-xl p-4 shadow-sm sticky top-4">
+            <div className="bg-white rounded-2xl p-4 shadow-md shadow-black/5 sticky top-4">
               <h3 className="font-bold text-sm flex items-center gap-2 mb-4">
                 <Filter size={16} /> Filtros
               </h3>
@@ -174,7 +175,7 @@ export default function ComercioFocado() {
                   <button
                     key={cat}
                     onClick={() => setCatAtiva(cat)}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition ${
+                    className={`w-full text-left px-3 py-2 rounded-2xl text-sm transition ${
                       catAtiva === cat ? 'bg-blue-600 text-white font-medium' : 'text-gray-600 hover:bg-gray-100'
                     }`}
                   >
@@ -232,12 +233,12 @@ export default function ComercioFocado() {
                 <div className="relative">
                   <button
                     onClick={() => setSortOpen(!sortOpen)}
-                    className="flex items-center gap-1 text-sm text-gray-600 hover:text-blue-600 transition bg-white px-3 py-1.5 rounded-lg border"
+                    className="flex items-center gap-1 text-sm text-gray-600 hover:text-blue-600 transition bg-white px-3 py-1.5 rounded-2xl border"
                   >
                     <ArrowUpDown size={14} /> {ordenacoes[ordenacao].label} <ChevronDown size={14} />
                   </button>
                   {sortOpen && (
-                    <div className="absolute right-0 top-full mt-1 bg-white border rounded-xl shadow-xl z-20 py-1 min-w-[180px]">
+                    <div className="absolute right-0 top-full mt-1 bg-white border rounded-2xl shadow-xl z-20 py-1 min-w-[180px]">
                       {ordenacoes.map((o, i) => (
                         <button
                           key={i}
@@ -250,7 +251,7 @@ export default function ComercioFocado() {
                     </div>
                   )}
                 </div>
-                <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+                <div className="flex gap-1 bg-gray-100 rounded-2xl p-1">
                   <button onClick={() => setViewMode('grid')} className={`p-1.5 rounded transition ${viewMode === 'grid' ? 'bg-white shadow text-blue-600' : 'text-gray-400'}`}>
                     <Grid3X3 size={16} />
                   </button>
@@ -265,7 +266,7 @@ export default function ComercioFocado() {
               {produtosFiltrados.map((p) => (
                 <div
                   key={p.id}
-                  className={`bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group ${viewMode === 'list' ? 'flex' : ''}`}
+                  className={`bg-white rounded-2xl overflow-hidden shadow-md shadow-black/5 hover:shadow-2xl transition-all group ${viewMode === 'list' ? 'flex' : ''}`}
                 >
                   <div className={`bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center relative ${viewMode === 'list' ? 'w-48 h-auto' : 'h-48'}`}>
                     <Cpu size={48} className="text-gray-200 group-hover:text-blue-200 transition-colors" />
@@ -277,11 +278,11 @@ export default function ComercioFocado() {
                     <div className="absolute top-2 right-2 flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button
                         onClick={() => toggleFav(p)}
-                        className={`bg-white p-1.5 rounded-lg shadow transition ${favoritos.includes(p.id) ? 'bg-red-50' : 'hover:bg-red-50'}`}
+                        className={`bg-white p-1.5 rounded-2xl shadow transition ${favoritos.includes(p.id) ? 'bg-red-50' : 'hover:bg-red-50'}`}
                       >
                         <Heart size={14} className={favoritos.includes(p.id) ? 'text-red-500 fill-red-500' : 'text-gray-400'} />
                       </button>
-                      <button onClick={() => setQuickView(p)} className="bg-white p-1.5 rounded-lg shadow hover:bg-blue-50 transition">
+                      <button onClick={() => setQuickView(p)} className="bg-white p-1.5 rounded-2xl shadow hover:bg-blue-50 transition">
                         <Eye size={14} className="text-gray-400 hover:text-blue-500" />
                       </button>
                     </div>
@@ -302,7 +303,7 @@ export default function ComercioFocado() {
                     <button
                       onClick={() => addCarrinho(p)}
                       disabled={!p.estoque}
-                      className="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed text-sm"
+                      className="w-full mt-3 bg-blue-600 text-white py-2 rounded-2xl font-medium hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed text-sm"
                     >
                       <ShoppingCart size={14} /> {p.estoque ? 'Comprar' : 'Indisponível'}
                     </button>
@@ -331,7 +332,7 @@ export default function ComercioFocado() {
       <Modal open={!!quickView} onClose={() => setQuickView(null)} title="Detalhes do Produto" size="lg">
         {quickView && (
           <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl h-64 flex items-center justify-center">
+            <div className="md:w-1/2 bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl h-64 flex items-center justify-center">
               <Cpu size={80} className="text-gray-200" />
             </div>
             <div className="md:w-1/2">
@@ -354,13 +355,13 @@ export default function ComercioFocado() {
                 <button
                   onClick={() => { addCarrinho(quickView); setQuickView(null) }}
                   disabled={!quickView.estoque}
-                  className="flex-1 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                  className="flex-1 bg-blue-600 text-white py-3 rounded-2xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
                   <ShoppingCart size={16} /> Adicionar ao Carrinho
                 </button>
                 <button
                   onClick={() => toggleFav(quickView)}
-                  className={`p-3 rounded-xl border transition ${favoritos.includes(quickView.id) ? 'bg-red-50 border-red-200' : 'hover:bg-gray-50'}`}
+                  className={`p-3 rounded-2xl border transition ${favoritos.includes(quickView.id) ? 'bg-red-50 border-red-200' : 'hover:bg-gray-50'}`}
                 >
                   <Heart size={20} className={favoritos.includes(quickView.id) ? 'text-red-500 fill-red-500' : 'text-gray-400'} />
                 </button>
@@ -377,7 +378,7 @@ export default function ComercioFocado() {
           <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col animate-slide-in-right" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between p-5 border-b">
               <h3 className="text-lg font-bold flex items-center gap-2"><ShoppingCart size={20} className="text-blue-600" /> Carrinho ({totalItens})</h3>
-              <button onClick={() => setCarrinhoAberto(false)} className="p-1.5 hover:bg-gray-100 rounded-lg"><X size={18} /></button>
+              <button onClick={() => setCarrinhoAberto(false)} className="p-1.5 hover:bg-gray-100 rounded-2xl"><X size={18} /></button>
             </div>
             <div className="flex-1 overflow-y-auto p-5 space-y-4">
               {carrinho.length === 0 ? (
@@ -386,8 +387,8 @@ export default function ComercioFocado() {
                   <p className="text-gray-500">Seu carrinho está vazio</p>
                 </div>
               ) : carrinho.map(item => (
-                <div key={item.id} className="flex items-center gap-3 bg-gray-50 rounded-xl p-3">
-                  <div className="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center shrink-0">
+                <div key={item.id} className="flex items-center gap-3 bg-gray-50 rounded-2xl p-3">
+                  <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">
                     <Cpu size={20} className="text-blue-200" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -409,7 +410,7 @@ export default function ComercioFocado() {
             {carrinho.length > 0 && (
               <div className="border-t p-5 space-y-3">
                 {totalCarrinho >= 300 && (
-                  <div className="flex items-center gap-2 text-blue-600 text-sm bg-blue-50 p-2 rounded-lg"><Truck size={14} /> Frete grátis!</div>
+                  <div className="flex items-center gap-2 text-blue-600 text-sm bg-blue-50 p-2 rounded-2xl"><Truck size={14} /> Frete grátis!</div>
                 )}
                 <div className="flex justify-between text-lg font-bold">
                   <span>Total</span>
@@ -421,7 +422,7 @@ export default function ComercioFocado() {
                     setCarrinho([])
                     setCarrinhoAberto(false)
                   }}
-                  className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+                  className="w-full bg-blue-600 text-white py-3 rounded-2xl font-semibold hover:bg-blue-700 transition"
                 >
                   Finalizar Compra
                 </button>
@@ -453,11 +454,11 @@ export default function ComercioFocado() {
               <li className="flex items-center gap-2"><MapPin size={14} /> Rua da Tecnologia, 500</li>
             </ul>
             <div className="flex gap-4 mt-4">
-              <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-                <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+              <a href="#" className="template-social-link">
+                <AtSign size={18} />
               </a>
-              <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-                <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+              <a href="#" className="template-social-link">
+                <Mail size={18} />
               </a>
             </div>
           </div>

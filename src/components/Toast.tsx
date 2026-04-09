@@ -1,23 +1,33 @@
-import { useState, useEffect, useCallback, createContext, useContext } from 'react'
-import { CheckCircle, AlertCircle, X, Info, ShoppingCart } from 'lucide-react'
+import React, { useState, useEffect, useCallback, createContext, useContext } from 'react'
+import { CheckCircle, AlertCircle, X, Info, ShoppingCart, LucideIcon } from 'lucide-react'
 
-const ToastContext = createContext(null)
+type ToastType = 'success' | 'error' | 'info' | 'cart'
 
-const icons = {
+interface Toast {
+  id: number
+  type: ToastType
+  title?: string
+  message: string
+  duration?: number
+}
+
+const ToastContext = createContext<((toast: Omit<Toast, 'id'>) => void) | null>(null)
+
+const icons: Record<ToastType, LucideIcon> = {
   success: CheckCircle,
   error: AlertCircle,
   info: Info,
   cart: ShoppingCart,
 }
 
-const colors = {
+const colors: Record<ToastType, string> = {
   success: 'bg-green-600',
   error: 'bg-red-600',
   info: 'bg-blue-600',
   cart: 'bg-emerald-600',
 }
 
-function ToastItem({ toast, onRemove }) {
+function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: number) => void }) {
   const [exiting, setExiting] = useState(false)
   const Icon = icons[toast.type] || Info
 
@@ -47,15 +57,15 @@ function ToastItem({ toast, onRemove }) {
   )
 }
 
-export function ToastProvider({ children }) {
-  const [toasts, setToasts] = useState([])
+export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [toasts, setToasts] = useState<Toast[]>([])
 
-  const addToast = useCallback((toast) => {
+  const addToast = useCallback((toast: Omit<Toast, 'id'>) => {
     const id = Date.now() + Math.random()
     setToasts(prev => [...prev, { ...toast, id }])
   }, [])
 
-  const removeToast = useCallback((id) => {
+  const removeToast = useCallback((id: number) => {
     setToasts(prev => prev.filter(t => t.id !== id))
   }, [])
 

@@ -1,0 +1,65 @@
+.template-social-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.1);
+  transition: all 200ms ease;
+}
+
+.template-social-link:hover {
+  background: rgb(255 255 255 / 0.2);
+  transform: translateY(-1px);
+}
+
+.template-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.template-page section,
+.template-page header,
+.template-page footer {
+  width: 100%;
+}
+
+.template-page h1 {
+  font-size: clamp(1.9rem, 8vw, 4.25rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.template-page h2 {
+  font-size: clamp(1.5rem, 6vw, 2.75rem);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.template-page p,
+.template-page span,
+.template-page li,
+.template-page button,
+.template-page a {
+  overflow-wrap: anywhere;
+}
+
+.template-page input,
+.template-page select,
+.template-page textarea,
+.template-page button {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .template-page [class*="px-6"] {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .template-page [class*="py-20"] {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}

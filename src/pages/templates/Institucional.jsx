@@ -1,5 +1,6 @@
+import './templates.css'
 import { Link } from 'react-router-dom'
-import { Instagram, Mail, Globe, Bot, BadgeDollarSign, ArrowRight, Sparkles } from 'lucide-react'
+import { AtSign, Mail, Globe, Bot, BadgeDollarSign, ArrowRight, Sparkles } from 'lucide-react'
 
 const projetos = [
   'Projeto Web 1',
@@ -12,7 +13,7 @@ const projetos = [
 
 export default function Institucional() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="template-page min-h-screen bg-gray-100 antialiased">
       <header className="sticky top-0 z-40 bg-linear-to-r from-blue-950 to-blue-700 text-orange-500 shadow-lg">
         {/* HEADER SECTION */}
         <div className="max-w-6xl mx-auto px-4 py-4">
@@ -21,8 +22,8 @@ export default function Institucional() {
             <h1 className="text-center text-lg md:text-xl font-bold uppercase">Nome Empresa</h1>
             <div className="flex items-center justify-center md:justify-end gap-2 text-xs">
               <span>Contato:</span>
-              <a href="https://instagram.com/yourprofile" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition">
-                <Instagram size={16} />
+              <a href="https://AtSign.com/yourprofile" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition">
+                <AtSign size={16} />
               </a>
               <a href="mailto:hello@example.com" className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition">
                 <Mail size={16} />
@@ -46,7 +47,7 @@ export default function Institucional() {
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-6 space-y-6">
-        <section className="rounded-2xl bg-linear-to-r from-blue-900 to-indigo-700 px-6 py-7 text-white shadow-sm">
+        <section className="rounded-2xl bg-linear-to-r from-blue-900 to-indigo-700 px-6 py-7 text-white shadow-md shadow-black/5">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs uppercase tracking-wide">
@@ -60,7 +61,7 @@ export default function Institucional() {
             </div>
             <Link
               to="/vitrine"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-bold text-white hover:bg-orange-400 transition shadow-lg"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-500 px-5 py-3 text-sm font-bold text-white hover:bg-orange-400 transition shadow-lg"
             >
               Abrir Vitrine Agora
               <ArrowRight size={16} />
@@ -68,13 +69,13 @@ export default function Institucional() {
           </div>
         </section>
 
-        <section id="web" className="bg-cyan-50 rounded-2xl p-6 shadow-sm">
+        <section id="web" className="bg-cyan-50 rounded-2xl p-6 shadow-md shadow-black/5">
           <h2 className="text-2xl font-bold mb-1">Trabalhos Feitos Anteriormente</h2>
           <p className="text-gray-600 mb-4">Estrutura inspirada no repositório estático original.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {projetos.map((item) => (
-              <div key={item} className="rounded-xl border border-gray-200 bg-white p-4 hover:shadow-md transition">
-                <div className="h-24 bg-gray-100 rounded-lg mb-3 flex items-center justify-center text-gray-400">
+              <div key={item} className="rounded-2xl border border-gray-200 bg-white p-4 hover:shadow-md transition">
+                <div className="h-24 bg-gray-100 rounded-2xl mb-3 flex items-center justify-center text-gray-400">
                   <Globe size={20} />
                 </div>
                 <p className="text-sm font-semibold">{item}</p>
@@ -83,24 +84,24 @@ export default function Institucional() {
           </div>
         </section>
 
-        <section id="automacao" className="bg-green-50 rounded-2xl p-6 shadow-sm">
+        <section id="automacao" className="bg-green-50 rounded-2xl p-6 shadow-md shadow-black/5">
           <h2 className="text-2xl font-bold mb-3">Sistemas de Automacao</h2>
           <div className="grid md:grid-cols-2 gap-6 items-center">
             <p className="text-gray-700">
               Aqui entra o bloco institucional de automacao: integracoes, rotinas, notificacoes
               e reducao de tarefas manuais para o cliente.
             </p>
-            <div className="rounded-xl border border-dashed border-gray-300 bg-white p-8 flex items-center justify-center text-gray-500">
+            <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-8 flex items-center justify-center text-gray-500">
               <Bot size={28} />
             </div>
           </div>
         </section>
 
-        <section id="precos" className="bg-white rounded-2xl p-6 shadow-sm">
+        <section id="precos" className="bg-white rounded-2xl p-6 shadow-md shadow-black/5">
           <h2 className="text-2xl font-bold mb-3">Precos</h2>
           <div className="grid md:grid-cols-3 gap-4">
             {['Essencial', 'Profissional', 'Escala'].map((plano, idx) => (
-              <div key={plano} className="border border-gray-200 rounded-xl p-4">
+              <div key={plano} className="border border-gray-200 rounded-2xl p-4">
                 <div className="flex items-center gap-2 text-gray-800 font-semibold">
                   <BadgeDollarSign size={18} />
                   {plano}
@@ -112,7 +113,7 @@ export default function Institucional() {
           </div>
         </section>
 
-        <section id="sobre" className="bg-yellow-50 rounded-2xl p-6 shadow-sm">
+        <section id="sobre" className="bg-yellow-50 rounded-2xl p-6 shadow-md shadow-black/5">
           <h2 className="text-2xl font-bold mb-3">Sobre Nos</h2>
           <p className="text-gray-700">
             Esta pagina traz a identidade do repositório original em formato React para manter a
@@ -128,11 +129,11 @@ export default function Institucional() {
             <span>Nome Empresa</span>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-blue-300">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>

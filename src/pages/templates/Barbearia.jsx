@@ -1,11 +1,12 @@
+import './templates.css'
 import { useState, useRef } from 'react'
 import BackToHome from '../../components/BackToHome'
 import Modal from '../../components/Modal'
 import { useToast } from '../../components/Toast'
 import {
   Scissors, Clock, MapPin, Phone, Star, ArrowRight,
-  Instagram, Calendar, Users, Award, ChevronRight,
-  CheckCircle, CreditCard, Sparkles, X
+  AtSign, Calendar, Users, Award, ChevronRight,
+  CheckCircle, CreditCard, Sparkles, X, Mail
 } from 'lucide-react'
 
 const servicos = [
@@ -78,7 +79,7 @@ export default function Barbearia() {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="template-page min-h-screen bg-stone-50 antialiased">
       <BackToHome />
 
       {/* HEADER SECTION */}
@@ -144,12 +145,12 @@ export default function Barbearia() {
               <button
                 key={s.id}
                 onClick={() => toggleServico(s)}
-                className={`group bg-white rounded-xl p-5 flex items-center justify-between hover:shadow-lg border-2 transition-all cursor-pointer text-left ${
+                className={`group bg-white rounded-2xl p-5 flex items-center justify-between hover:shadow-2xl border-2 transition-all cursor-pointer text-left ${
                   sel ? 'border-amber-500 shadow-lg shadow-amber-500/10' : 'border-transparent hover:border-amber-200'
                 }`}
               >
                 <div className="flex items-center gap-4">
-                  <div className={`p-2.5 rounded-lg transition-colors ${sel ? 'bg-amber-600' : 'bg-amber-100 group-hover:bg-amber-600'}`}>
+                  <div className={`p-2.5 rounded-2xl transition-colors ${sel ? 'bg-amber-600' : 'bg-amber-100 group-hover:bg-amber-600'}`}>
                     <Scissors size={18} className={`transition-colors ${sel ? 'text-white' : 'text-amber-600 group-hover:text-white'}`} />
                   </div>
                   <div>
@@ -168,7 +169,7 @@ export default function Barbearia() {
         </div>
 
         {servicosSel.length > 0 && (
-          <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-center justify-between">
+          <div className="mt-6 bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center justify-between">
             <div>
               <p className="font-semibold text-amber-800">{servicosSel.length} serviço{servicosSel.length > 1 ? 's' : ''} selecionado{servicosSel.length > 1 ? 's' : ''}</p>
               <p className="text-sm text-amber-600">{servicosSel.map(s => s.nome).join(', ')}</p>
@@ -268,7 +269,7 @@ export default function Barbearia() {
                     key={h}
                     disabled={ocupado}
                     onClick={() => setHorarioSel(h)}
-                    className={`py-3 rounded-lg text-sm font-medium transition ${
+                    className={`py-3 rounded-2xl text-sm font-medium transition ${
                       ocupado
                         ? 'bg-gray-100 text-gray-300 cursor-not-allowed line-through'
                         : horarioSel === h
@@ -283,7 +284,7 @@ export default function Barbearia() {
             </div>
 
             {(horarioSel || servicosSel.length > 0) && (
-              <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-6 animate-fade-in">
+              <div className="mt-8 bg-amber-50 border border-amber-200 rounded-2xl p-6 animate-fade-in">
                 <h3 className="font-bold text-amber-800 mb-4">Dados para agendamento</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                   <input
@@ -291,18 +292,18 @@ export default function Barbearia() {
                     placeholder="Seu nome *"
                     value={nomeCliente}
                     onChange={e => setNomeCliente(e.target.value)}
-                    className="px-4 py-2.5 rounded-lg border border-amber-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="px-4 py-2.5 rounded-2xl border border-amber-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                   <input
                     type="tel"
                     placeholder="Telefone (opcional)"
                     value={telefoneCliente}
                     onChange={e => setTelefoneCliente(e.target.value)}
-                    className="px-4 py-2.5 rounded-lg border border-amber-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="px-4 py-2.5 rounded-2xl border border-amber-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
                   />
                 </div>
 
-                <div className="bg-white rounded-lg p-3 mb-4 text-sm space-y-1">
+                <div className="bg-white rounded-2xl p-3 mb-4 text-sm space-y-1">
                   <p className="text-gray-500">
                     <span className="font-medium text-gray-700">Serviços:</span>{' '}
                     {servicosSel.length > 0 ? servicosSel.map(s => s.nome).join(', ') : <span className="text-red-400">Nenhum selecionado</span>}
@@ -322,7 +323,7 @@ export default function Barbearia() {
 
                 <button
                   onClick={handleAgendar}
-                  className="w-full bg-amber-600 text-white py-3 rounded-xl font-semibold hover:bg-amber-700 transition flex items-center justify-center gap-2"
+                  className="w-full bg-amber-600 text-white py-3 rounded-2xl font-semibold hover:bg-amber-700 transition flex items-center justify-center gap-2"
                 >
                   <Calendar size={16} /> Confirmar Agendamento
                 </button>
@@ -337,7 +338,7 @@ export default function Barbearia() {
         <div className="text-center">
           <Calendar size={40} className="text-amber-600 mx-auto mb-4" />
           <h3 className="text-lg font-bold mb-4">Confirma os dados abaixo?</h3>
-          <div className="bg-gray-50 rounded-xl p-4 text-sm space-y-2 text-left mb-6">
+          <div className="bg-gray-50 rounded-2xl p-4 text-sm space-y-2 text-left mb-6">
             <p><span className="font-medium">Nome:</span> {nomeCliente}</p>
             <p><span className="font-medium">Barbeiro:</span> {barbeiroSel !== null ? barbeiros[barbeiroSel].nome : ''}</p>
             <p><span className="font-medium">Horário:</span> {horarioSel}</p>
@@ -345,8 +346,8 @@ export default function Barbearia() {
             <p className="font-bold text-amber-600 pt-2 border-t">Total: R$ {totalServicos}</p>
           </div>
           <div className="flex gap-3">
-            <button onClick={() => setConfirmModal(false)} className="flex-1 border border-gray-200 py-2.5 rounded-xl font-medium hover:bg-gray-50 transition">Voltar</button>
-            <button onClick={confirmarAgendamento} className="flex-1 bg-amber-600 text-white py-2.5 rounded-xl font-semibold hover:bg-amber-700 transition">Confirmar</button>
+            <button onClick={() => setConfirmModal(false)} className="flex-1 border border-gray-200 py-2.5 rounded-2xl font-medium hover:bg-gray-50 transition">Voltar</button>
+            <button onClick={confirmarAgendamento} className="flex-1 bg-amber-600 text-white py-2.5 rounded-2xl font-semibold hover:bg-amber-700 transition">Confirmar</button>
           </div>
         </div>
       </Modal>
@@ -395,7 +396,7 @@ export default function Barbearia() {
                 <Sparkles size={18} /> Quero Aproveitar
               </button>
               <button className="border border-stone-600 px-8 py-3.5 rounded-full font-semibold hover:bg-stone-700 transition flex items-center gap-2">
-                <Instagram size={18} /> @barber.studio
+                <AtSign size={18} /> @barber.studio
               </button>
             </div>
           </div>
@@ -410,11 +411,11 @@ export default function Barbearia() {
             <span className="font-bold text-lg">Barber Studio</span>
           </div>
           <div className="flex gap-4">
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="logo-instagram" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <AtSign size={18} />
             </a>
-            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-white/20 transition flex items-center justify-center w-10 h-10">
-              <ion-icon name="mail-sharp" style={{ fontSize: '20px' }}></ion-icon>
+            <a href="#" className="template-social-link">
+              <Mail size={18} />
             </a>
           </div>
           <p className="text-sm text-stone-500">&copy; {new Date().getFullYear()} Todos os direitos reservados</p>
