@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@source "../src";
 :root {
   /* Colors - Light Mode */
   --bg-color: #ffffff;

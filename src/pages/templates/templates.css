@@ -1,65 +1,112 @@
-.template-social-link {
-  width: 2.5rem;
-  height: 2.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  background: rgb(255 255 255 / 0.1);
-  transition: all 200ms ease;
-}
+/* 
+  templates.css 
+  Modern, Minimalist & Mobile-First 
+*/
 
-.template-social-link:hover {
-  background: rgb(255 255 255 / 0.2);
-  transform: translateY(-1px);
-}
-
+/* Base Container */
 .template-page {
   width: 100%;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
+/* 
+  Mobile-First Vertical Rhythm 
+  We provide a solid baseline for sections, allowing them to breathe.
+  Tailwind utility classes (like py-20, py-24) applied in JSX will override 
+  these baseline rules due to higher specificity, which is the expected behavior.
+*/
 .template-page section,
 .template-page header,
 .template-page footer {
   width: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
+@media (min-width: 768px) {
+  .template-page section,
+  .template-page header,
+  .template-page footer {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .template-page section,
+  .template-page header,
+  .template-page footer {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Modern Typography */
 .template-page h1 {
-  font-size: clamp(1.9rem, 8vw, 4.25rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 800;
   text-wrap: balance;
+  margin-bottom: 1.5rem;
 }
 
 .template-page h2 {
-  font-size: clamp(1.5rem, 6vw, 2.75rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 700;
   text-wrap: balance;
+  margin-bottom: 1.5rem;
 }
 
-.template-page p,
-.template-page span,
-.template-page li,
-.template-page button,
-.template-page a {
-  overflow-wrap: anywhere;
+.template-page p {
+  line-height: 1.7;
 }
 
+/* Forms & Interactive Elements */
 .template-page input,
 .template-page select,
 .template-page textarea,
 .template-page button {
   max-width: 100%;
+  font-family: inherit;
 }
 
-@media (max-width: 640px) {
-  .template-page [class*="px-6"] {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+.template-page input,
+.template-page select,
+.template-page textarea {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
 
-  .template-page [class*="py-20"] {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
+.template-page input:focus,
+.template-page select:focus,
+.template-page textarea:focus {
+  outline: none;
+  transform: translateY(-1px);
+  /* A subtle shadow to give a floating/modern feel when focused */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Social Links - Minimalist modern hover */
+.template-social-link {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.1);
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.template-social-link:hover {
+  background-color: var(--accent-color, currentColor);
+  color: #ffffff;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
 }
