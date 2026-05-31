@@ -22,12 +22,14 @@ import Institucional from './pages/templates/Institucional'
 
 import { GlobalStateProvider } from './context/GlobalContext'
 import { ThemeProvider } from './context/ThemeContext'
+import ScrollToTop from './components/common/ScrollToTop'
 
 export default function App() {
   return (
     <ThemeProvider>
       <GlobalStateProvider>
         <ToastProvider>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/web" element={<WebPage />} />
