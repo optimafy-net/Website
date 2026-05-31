@@ -23,8 +23,6 @@ const HeaderBg = styled.div<{ $isScrolled: boolean }>`
   width: 100%;
   height: 100%;
   background-color: var(--header-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid ${(props) => (props.$isScrolled ? 'var(--border-color)' : 'transparent')};
   transition: border-color 0.3s ease, background-color 0.3s ease;
   z-index: -1;
