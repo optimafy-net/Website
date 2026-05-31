@@ -6,6 +6,8 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 
 export default defineConfig(({ command }) => ({
   // Em build para GitHub Pages, publica em /Website/.
-  base: command === 'build' ? '/Website/' : '/',
+  base: process.env.DEPLOY_TARGET === 'github'
+    ? '/Website/'
+    : '/',
   plugins: [react(), tailwindcss(), cloudflare()],
 }))
