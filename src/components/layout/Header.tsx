@@ -13,6 +13,7 @@ const HeaderWrapper = styled.header`
   left: 0;
   width: 100%;
   z-index: 1000;
+  pointer-events: none; /* Allow clicks through to the page */
 `;
 
 const HeaderBg = styled.div<{ $isScrolled: boolean }>`
@@ -27,6 +28,7 @@ const HeaderBg = styled.div<{ $isScrolled: boolean }>`
   border-bottom: 1px solid ${(props) => (props.$isScrolled ? 'var(--border-color)' : 'transparent')};
   transition: border-color 0.3s ease, background-color 0.3s ease;
   z-index: -1;
+  pointer-events: auto; /* Capture clicks for the background if needed, though usually not */
 `;
 
 const Nav = styled(Container)`
@@ -36,6 +38,7 @@ const Nav = styled(Container)`
   height: 70px;
   position: relative;
   z-index: 10;
+  pointer-events: auto; /* Capture clicks for children */
 `;
 
 const Logo = styled(Link)`
@@ -51,6 +54,7 @@ const NavList = styled.ul<{ $isOpen: boolean }>`
   display: flex;
   gap: 2rem;
   align-items: center;
+  pointer-events: auto;
 
   @media (max-width: 1024px) {
     position: fixed;
@@ -72,7 +76,6 @@ const NavList = styled.ul<{ $isOpen: boolean }>`
     
     /* Improved interaction logic */
     visibility: ${(props) => (props.$isOpen ? 'visible' : 'hidden')};
-    pointer-events: auto; /* Always auto when visible */
     
     /* Fix for blurriness/rendering artifacts */
     will-change: transform;
@@ -266,25 +269,25 @@ export const Header: React.FC = () => {
       <HeaderBg $isScrolled={scrollPosition > 50} />
       <Overlay $isOpen={isOpen} onClick={() => setIsOpen(false)} />
       
-      <NavList $isOpen={isOpen}>
-        {menuItems.map((item) => (
-          <NavItem 
-            key={item.id} 
-            $isActive={(item.path === location.pathname && (item.path !== '/' || activeId === item.id))}
-          >
-            <Link 
-              to={item.path}
-              onClick={(e) => handleNavClick(e, item)}
-            >
-              {item.label}
-            </Link>
-          </NavItem>
-        ))}
-      </NavList>
-
       <Nav>
         <Logo to="/" onClick={() => setIsOpen(false)}>Optimafy</Logo>
         
+        <NavList $isOpen={isOpen}>
+          {menuItems.map((item) => (
+            <NavItem 
+              key={item.id} 
+              $isActive={(item.path === location.pathname && (item.path !== '/' || activeId === item.id))}
+            >
+              <Link 
+                to={item.path}
+                onClick={(e) => handleNavClick(e, item)}
+              >
+                {item.label}
+              </Link>
+            </NavItem>
+          ))}
+        </NavList>
+
         <Controls>
           <button onClick={toggleTheme} aria-label="Toggle Theme" style={{ color: '#ffffff', padding: '8px', borderRadius: '8px', background: 'rgba(255, 255, 255, 0.1)' }}>
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
