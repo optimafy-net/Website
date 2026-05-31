@@ -155,7 +155,7 @@ const Overlay = styled.div<{ $isOpen: boolean }>`
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: transparent;
     z-index: 1500;
     opacity: ${(props) => (props.$isOpen ? 1 : 0)};
     visibility: ${(props) => (props.$isOpen ? 'visible' : 'hidden')};
