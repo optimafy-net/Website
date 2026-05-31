@@ -156,7 +156,6 @@ const Overlay = styled.div<{ $isOpen: boolean }>`
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     z-index: 1500;
     opacity: ${(props) => (props.$isOpen ? 1 : 0)};
